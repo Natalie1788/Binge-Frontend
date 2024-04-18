@@ -13,16 +13,24 @@ Git Instructions
 
 
 Project Resources
--Tailwind
- Install guide
- TBD
+Tailwind
+ Install guide - https://tailwindcss.com/docs/guides/vite
+  ⚠ Vite is required, prior to downloading Tailwind
+ 
 
 OpenAI api
 Install guide
 TBD
 
-Vite
-Install guide
-TBD
+Radix UI
+Install guide - https://www.radix-ui.com/themes/docs/overview/getting-started
 
+Vite
+Install guide -  https://vitejs.dev/guide/
+
+React Router
+Install guide - https://reactrouter.com/en/main/start/tutorial
+
+React Hook Form
+Install guide - https://react-hook-form.com/get-started
 
