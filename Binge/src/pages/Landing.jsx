@@ -54,6 +54,7 @@ const Landing = () => {
        
         
       </menu>
+      <hr />
      
        
     </div>
