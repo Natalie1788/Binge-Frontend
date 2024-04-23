@@ -6,20 +6,6 @@ import { Link } from "react-router-dom";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const signInPage= () => {
   return (
     <>
