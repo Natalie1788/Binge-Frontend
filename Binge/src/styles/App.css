@@ -5,3 +5,37 @@ button#user-menu-button {
     padding-left: 24px;
     padding-top: 5px;
 }
+
+.menu h1 {
+    font-weight: bold;
+    font-family: revert;
+}
+.menu button {
+    background-color: grey;
+    padding: 10px;
+    border-radius: 15px;
+}
+.main {
+    
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-around;
+}
+.menu {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: center;
+}
+input[type="text"] {
+    margin-top: 80px;
+    width: 500px;
+    height: 500px;
+    background-color: grey;
+}

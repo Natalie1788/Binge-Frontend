@@ -1,6 +1,7 @@
 
 import './styles/App.css'
 import Navbar from './components/Navbar'
+import Landing from './pages/Landing'
 
 
 
@@ -11,6 +12,7 @@ function App() {
     
   <>
   <Navbar/>
+  <Landing/>
   </>
     
   )
