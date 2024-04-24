@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
+import Cookbook from "./pages/Cookbook.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import "@radix-ui/themes/styles.css";
@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Theme>
-        <App />
+        <Cookbook />
       </Theme>
     </BrowserRouter>
   </React.StrictMode>
