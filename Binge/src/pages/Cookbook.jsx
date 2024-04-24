@@ -16,9 +16,9 @@ const Cookbook = () => {
                 </div>
                 <div className='flex-1 my-10'>
                     <h1 className='flex justify-around'>Din kokbok - Sparade recept</h1>
-                    <div className='flex items-center justify-around'>
-                        <div className=' bg-white border border-solid border-black'>Bild på rätt</div>
-                        <div className=' bg-white border border-solid border-black'>Bild på rätt</div>
+                    <div className='flex items-center justify-center'>
+                        <div className='mr-5 p-5 bg-white border border-solid border-black'>Bild på rätt</div>
+                        <div className=' p-5 bg-white border border-solid border-black'>Bild på rätt</div>
                     </div>
                 </div>
             </div>
