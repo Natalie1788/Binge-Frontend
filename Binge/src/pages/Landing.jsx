@@ -1,9 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React from 'react';
+import Navbar from "../components/Navbar";
+import Footer from '../pages/Footer'
+import "../styles/App.css";
 
 const Landing = () => {
   return (
     <div>
+      <Navbar />
       <menu>
         <div className="main">
           <div className="menu">
@@ -55,6 +59,7 @@ const Landing = () => {
         
       </menu>
       <hr />
+      <Footer/>
      
        
     </div>
