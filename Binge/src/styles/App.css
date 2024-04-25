@@ -47,3 +47,32 @@ footer {
     justify-content: space-evenly;
     align-items: center;
 }
+
+
+
+/*------------------------React Select styles (Nataliia)----------------*/
+.select__multi-value {
+    border-radius: 5px !important;
+}
+.select__multi-value__label {
+    background-color: rgb(206, 206, 206);
+    color: rgb(18, 18, 18) !important;
+}
+
+.select__menu {
+    animation: scaleIn 0.3s ease-in-out;
+}
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
