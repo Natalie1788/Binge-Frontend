@@ -34,7 +34,7 @@ button#user-menu-button {
     justify-content: space-around;
     align-items: center;
 }
-input[type="text"] {
+.placeholder {
     margin-top: 80px;
     width: 500px;
     height: 500px;
