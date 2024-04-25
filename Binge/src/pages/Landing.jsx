@@ -5,6 +5,7 @@ import "../styles/App.css"
 const Landing = () => {
   return (
     <div>
+      <Navbar />
       <menu>
         <div className="main">
           <div className="menu">
@@ -56,6 +57,7 @@ const Landing = () => {
         
       </menu>
       <hr />
+      <Footer/>
      
        
     </div>
