@@ -1,13 +1,13 @@
-
 import TastePreferencies from "../components/SelectTaste"
 import AllergySelection from "../components/SelectAllergy"
 import TagInput from "../components/IngrediensInput"
 import { Button } from '@radix-ui/themes';
-import '../styles/App.css'
+import './App.css'
 
 
 
-function Profile() {
+
+function TastePref() {
  
 
   return (
@@ -22,4 +22,4 @@ function Profile() {
   )
 }
 
-export default Profile;
+export default TastePref;

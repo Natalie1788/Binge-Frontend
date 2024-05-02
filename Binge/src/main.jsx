@@ -1,19 +1,20 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Cookbook from "./pages/Cookbook.jsx";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
+import router from "./routes/Routing";
+
 
 const root = createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    
       <Theme>
-        <Cookbook />
+        <RouterProvider router={router}/>
       </Theme>
-    </BrowserRouter>
+    
   </React.StrictMode>
 );
