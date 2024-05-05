@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "name": "Fish and Chips",
+    "imgUrl": "https://honest-food.net/wp-content/uploads/2012/07/classic-fish-and-chips-1200-1140x1536.jpg",
+    "main ingredients": ["Fish", "Seafood", "Potato"],
+    "cuisine": ["Global"]
+  },
+  {
+    "id": 2,
+    "name": "Spaghetti Carbonara",
+    "imgUrl": "https://essenrezept.de/wp-content/uploads/2023/08/Carbonara-Sauce.jpg.avif",
+    "main ingredients": ["pasta", "bacon", "egg", "cheese"],
+    "cuisine": ["Italian", "Global"]
+  },
+  {
+    "id": 3,
+    "name": "Chicken Tikka Masala",
+    "imgUrl": "https://cafedelites.com/wp-content/uploads/2018/04/Best-Chicken-Tikka-Masala-IMAGE-2-1365x2048.jpg",
+    "main ingredients": ["chicken", "rice"],
+    "cuisine": ["Indian", "Global"]
+  },
+  {
+    "id": 4,
+    "name": "Seafood Paella",
+    "imgUrl": "https://res.cloudinary.com/tienda-com/image/upload/f_auto/q_auto/c_fill,w_752/dpr_2.0/v1/recipes/mixed-seafood-paella",
+    "main ingredients": ["Shrimp", "Seafood", "Rice", "Vegetables"],
+    "cuisine": ["Latin", "Global"]
+  },
+  {
+    "id": 5,
+    "name": "Hamburger",
+    "imgUrl": "https://www.readersdigest.ca/wp-content/uploads/2016/07/worcestershire-burger-recipe.jpg?resize=700%2C525",
+    "main ingredients": ["Meat", "Beef", "Bread"],
+    "cuisine": ["Global"]
+  },
+  {
+    "id": 6,
+    "name": "Pad Thai",
+    "imgUrl": "https://amagpiestale.files.wordpress.com/2013/04/pad-thai-wok.jpg?w=614",
+    "main ingredients": ["Noodles", "Egg", "Shrimp"],
+    "cuisine": ["Asian", "Global"]
+  },
+  {
+    "id": 7,
+    "name": "Ratatouille",
+    "imgUrl": "https://cleanfoodcrush.com/wp-content/uploads/2017/08/Eat-Clean-Classic-Summertime-Ratatouille--1024x683.jpg",
+    "main ingredients": ["Vegetables"],
+    "cuisine": ["French", "Global"]
+  },
+  {
+    "id": 8,
+    "name": "Chinese Steamed Fish",
+    "imgUrl": "https://lh6.googleusercontent.com/uoHQgaQfw5jhrHGQ_dg8YF7y2PHdMk-XDhiGRL7X0tJ20_Ii2Oqy0mT5tKnUU40ZrCWU8UKORENYdCUCrL3cUdcUq7ETdE1_75jim4_ZyvsnHXzAFyx0j4u6rECN9b6R2OxybFD1",
+    "main ingredients": ["Fish", "Seafood"],
+    "cuisine": ["Asian", "Global"]
+  }
+
+]

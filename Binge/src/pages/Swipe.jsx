@@ -1,5 +1,6 @@
 
 
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar'
 
 const Swipe = () => {
@@ -15,43 +16,87 @@ const Swipe = () => {
 export default Swipe
 
 
+
 const SwipeCard = () => {
-return (
-  <>
-    <div className="h-8"></div>
-    <div className="flex flex-col ">
-      <h1 className="flex justify-center font-bold text-4xl mb-6 ">
-        Swipa på maträtter
-      </h1>
+  const [data, setData] = useState([]);
+  const [dishIndex, setDishIndex] = useState(0);
 
-      <div className="flex justify-center items-center flex-col">
-        <h3>
-          {" "}
-          Swipa höger för att favorisera en rätt, och spara den till din kokbok.
-        </h3>
-        <h3>Swipa vänster för att visa nästa rätt.</h3>
-        <h3>
-          Tryckte fel? Tryck på ↩ knappen för att gå tillbaka till din senaste
-          rätt.
-        </h3>
-      </div>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('./src/fakeData2.json');
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const newData = await response.json();
+        console.log(newData);
+        setData(newData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-      <section className="flex justify-center items-center h-screen">
-        {" "}
-        {/* Added flex and centering classes */}
-        <div className="size-[30rem] border-solid border-black border-8 flex flex-col justify-end bg-white p-8 rounded-lg items-center justify-self-center self-center">
-          <img />
-          <div className="flex space-x-7  mb-4">
-            <button className="text-3xl">↩</button>
-            <button className="text-3xl">❌</button>
-            <button className="text-3xl">🥘</button>
-          </div>
+    fetchData();
+  } , [setData]);
 
-          <h2 className="font-bold">Spaghet</h2>
-        </div>
-      </section>
-    </div>
-  </>
-);
 
+
+ 
+ 
+const currentDish = data[dishIndex] || {};
+console.log(currentDish)
+
+const showNext = () => {
+  setDishIndex(dishIndex + 1) 
+  
+  
 }
+
+
+  return (
+    <>
+      <div className="flex flex-col ">
+        <h1 className="flex justify-center font-bold text-4xl mb-6 ">
+          Swipa på maträtter
+        </h1>
+
+        <div className="flex justify-center items-center flex-col">
+          <h3>
+            {" "}
+            Swipa höger för att favorisera en rätt, och spara den till din
+            kokbok.
+          </h3>
+          <h3>Swipa vänster för att visa nästa rätt.</h3>
+          <h3>
+            Tryckte fel? Tryck på ↩ knappen för att gå tillbaka till din senaste
+            rätt.
+          </h3>
+        </div>
+
+        <section className="flex justify-center items-center h-screen">
+          {" "}
+          <div className="size-[30rem] border-solid border-black border-8 flex flex-col justify-end bg-white  rounded-lg items-center justify-self-center self-center relative">
+            <img
+              src={currentDish.imgUrl}
+              alt={currentDish.name}
+              className="w-full h-full"
+            />
+            <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center mb-12">
+              <h2 className="font-bold  text-white text-lg bg-black p-3 mb-5">
+                {currentDish.name}
+              </h2>
+
+              <div className="flex space-x-7">
+                <button className="text-3xl">↩</button>
+                <button className="text-3xl" onClick={showNext}>
+                  ❌
+                </button>
+                <button className="text-3xl">🥘</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
