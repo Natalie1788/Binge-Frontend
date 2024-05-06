@@ -10,11 +10,8 @@ button#user-menu-button {
     font-weight: bold;
     font-family: revert;
 }
-.menu button {
-    background-color: grey;
-    padding: 10px;
-    border-radius: 15px;
-}
+
+
 .main {
     
     display: flex;
