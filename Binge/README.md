@@ -16,7 +16,9 @@ Project Resources
 Tailwind
  Install guide - https://tailwindcss.com/docs/guides/vite
   ⚠ Vite is required, prior to downloading Tailwind
- 
+ *** Leila**
+ npm install tailwindcss @heroicons/react (for icon of social media)
+
 
  React Select
  Install guide - https://react-select.com/home#getting-started 
