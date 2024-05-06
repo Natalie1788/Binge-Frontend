@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar'
 import '/src/styles/Cookbook.css'
 
+
 const Cookbook = () => {
     return (
       <>
@@ -34,6 +35,7 @@ const Cookbook = () => {
         </div>
       </>
     );
+
 }
 
 export default Cookbook

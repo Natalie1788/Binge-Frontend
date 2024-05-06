@@ -1,0 +1,20 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+//$grid-gutter-width: 0;
+$link-color:  #2B2F2F;
+$link-hover-color: #DE667B;
+
+$red:     #DE667B;
+
+$blue: #67B0C7;
+$success: #5BC7A5;
+$gray-100: #EBEBEB;
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here

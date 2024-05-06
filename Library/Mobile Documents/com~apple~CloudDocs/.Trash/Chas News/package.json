@@ -1,0 +1,26 @@
+{
+  "name": "chas-news",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "tsc": "tsc",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.12"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "bootstrap": "^5.3.2",
+    "firebase": "^10.8.0"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
