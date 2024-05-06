@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
-import Navbar from "../components/Navbar";
-import Footer from '../pages/Footer'
-import "../styles/App.css";
+import React from 'react'
+import Navbar from '../components/Navbar'
+import Footer from "../components/Footer"
+import "../styles/App.css"
 
 const Landing = () => {
   return (
@@ -17,13 +17,13 @@ const Landing = () => {
           </div>
           <div className="card">
           
-            <input type="text" />
+            <input type="text" className='placeholder' />
           </div>
         </div>
         <div className="main">
         <div className="card">
           
-          <input type="text" />
+          <input type="text" className='placeholder' />
         </div>
           <div className="menu">
             <h1>Binge: Din personliga kock med AI-skapade recept</h1>
@@ -40,13 +40,13 @@ const Landing = () => {
           </div>
           <div className="card">
           
-            <input type="text" />
+            <input type="text" className='placeholder'  />
           </div>
         </div>
         <div className="main">
         <div className="card">
           
-          <input type="text" />
+          <input type="text"  className='placeholder' />
         </div>
           <div className="menu">
             <h1>Binge: Din personliga kock med AI-skapade recept</h1>

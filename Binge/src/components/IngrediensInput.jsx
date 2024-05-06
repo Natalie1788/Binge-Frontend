@@ -45,7 +45,7 @@ function TagInput() {
           </span>
         ))}
       </div>
-      <input className='border border-slate-500 border-solid rounded mt-2.5'
+      <input className='border border-slate-500 border-solid rounded mt-2.5 '
         type="text"
         value={inputText}
         onChange={handleInputChange}

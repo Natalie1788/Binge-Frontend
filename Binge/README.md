@@ -18,6 +18,9 @@ Tailwind
   ⚠ Vite is required, prior to downloading Tailwind
  
 
+ React Select
+ Install guide - https://react-select.com/home#getting-started 
+
 OpenAI api
 Install guide
 TBD
