@@ -18,11 +18,11 @@ function Footer(){
            
           
        
-            <div className="flex flex-row justify-evenly list-none mt-3 mb-3 ">
+            <div className="flex flex-row justify-center gap-8 list-none mt-3 mb-3 ">
           
-                <li><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
-                <li><a href="#">link 3</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Linkdin</a></li>
           
             </div>
             
