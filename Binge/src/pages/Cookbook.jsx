@@ -44,7 +44,8 @@ function Cookbook() {
         </div>
       </div>
 
-      {/* Popup window for liked food */}
+      {/* Popup window for liked food. 
+      To add in future: connect with specific clicked saved food. */}
       <div className="App">
         <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded" onClick={seeFood}>
           See food here!
