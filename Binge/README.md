@@ -39,3 +39,6 @@ Install guide - https://reactrouter.com/en/main/start/tutorial
 React Hook Form
 Install guide - https://react-hook-form.com/get-started
 
+React icons
+Install guide - https://react-icons.github.io/react-icons/
+
