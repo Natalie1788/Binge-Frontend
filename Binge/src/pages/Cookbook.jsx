@@ -6,7 +6,7 @@ const Cookbook = () => {
     return (
       <>
         <Navbar />
-        { /* Copy+paste the code below as a component with the name "Cookbook" */ }
+        
         <div className="flex flex-col p-5 bg-gray-300 border-b border-solid border-black">
           <div className="flex bg-white border border-solid border-black dark:bg-gray-900 dark:text-white">
             <p>Binge Searchbar</p>
