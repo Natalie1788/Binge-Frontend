@@ -16,22 +16,22 @@ const Landing = () => {
         <div className=" flex flex-row gap-1 align-content-stretch justify-content-around mb-1">
           <div className="menu">
             <div className="title">
-                <h1 className='font-sans font-extrabold text-3xl text'>Binge: Din personliga kock med AI-skapade recept</h1>
+            <h1 className='font-sans font-extrabold text-3xl text mb-16 '>Binge: Din personliga kock med AI-skapade recept</h1>
                 <p className='text-xl font-normal'> Välkommen till SwifeChef, där du kan upptäcka, gilla och skapa recept på ett roligt sätt med ett enkelt svep.
               <br /> Svep höger på en maträttsbild du gillar, och låt vår avancerade AI-teknik generera ett skräddarsytt recept som passar dina preferenser. </p>
             </div>
-           <div className=' button flex gap-10 bg-grey-100 '>
+           <div className=' flex gap-10 bg-grey-100 '>
            <Link to="../SignIn">
               <button  className='p-4 w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2  border-green-800'>Börja din matresa </button>
               </Link>
             <Link to="../SignUp">
                 <button className='p-4 w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-500 hover:text-white'>Loga In</button>
               </Link>
-           </div> 
-           <div className="card ml-32">
-          <img src={Foodr} alt="Foodr"  className='placeholder'/>
+           </div>  
           </div> 
-          </div>  
+          <div className="card ml-32">
+               <img src={Foodr} alt="Foodr"  className='placeholder'/>
+          </div> 
           
         
         </div>
