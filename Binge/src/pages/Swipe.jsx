@@ -94,9 +94,7 @@ const SwipeCard = () => {
   return (
     <>
       <div className="flex flex-col ">
-        <h1 className="flex justify-center font-bold text-4xl mb-6 ">
-          Swipe
-        </h1>
+        <h1 className="flex justify-center font-bold text-4xl mb-6 ">Swipe</h1>
 
         <div className="flex justify-center items-center flex-col">
           <h3>
@@ -110,39 +108,37 @@ const SwipeCard = () => {
           </h3>
         </div>
 
-        <section className="flex justify-center  items-center h-screen">
-          <div className="bg-white p-5 my-10 border border-solid border-black">
+        <section className="flex justify-center  items-center ">
+          <div className="flex-col sm:flex-col-reverse ">
+            <div className="flex-col w-full md:w-[25rem] h-[25rem] flex flex-col sm:flex-col-reverse sm:mt-3 items-center justify-center bg-white rounded-lg relative overflow-hidden">
+              <img
+                src="/src/assets/F.jpg"
+                alt={currentDish.key}
+                className="w-full h-auto object-contain"
+              />
+              <h2 className="font-bold text-lg text-center">Spaghet</h2>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4 bg-white bg-opacity-75"></div>
+            <div className="flex space-x-10 p-2 justify-center">
+              <button className="text-3xl" onClick={showPrevious}>
+                <GrRevert />
+              </button>
+              <button className="text-3xl" onClick={showNext}>
+                {" "}
+                <MdCancel />
+              </button>
+              <button className="text-3xl" onClick={likeDish}>
+                {" "}
+                <FaHeart />
+              </button>
+            </div>
+          </div>
+        </section>
+          <div className="bg-white p-5 my-10 border border-solid border-black flex justify-around ">
             <p>Smakprofil</p>
             <p>Svepa</p>
             <p>Kokbok</p>
           </div>
-          <div className="flex-col ">
-            <div className="flex-col w-full md:w-[25rem] h-[25rem] border-2 border-solid border-black flex items-center justify-center bg-white rounded-lg relative overflow-hidden">
-              <h2 className="font-bold text-lg  w-full text-center ">
-                {currentDish.key}
-              </h2>
-              <img
-                src={currentDish.value}
-                alt={currentDish.key}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-              <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4 bg-white bg-opacity-75"></div>
-              <div className="flex space-x-10 p-2">
-                <button className="text-3xl" onClick={showPrevious}>
-                  <GrRevert />
-                </button>
-                <button className="text-3xl" onClick={showNext}>
-                  {" "}
-                  <MdCancel />
-                </button>
-                <button className="text-3xl" onClick={likeDish}>
-                  {" "}
-                  <FaHeart />
-                </button>
-              </div>
-          </div>
-        </section>
       </div>
     </>
   );
