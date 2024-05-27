@@ -21,7 +21,7 @@ const Landing = () => {
               <br /> Svep höger på en maträttsbild du gillar, och låt vår avancerade AI-teknik generera ett skräddarsytt recept som passar dina preferenser. </p>
             </div>
            <div className=' flex gap-10 bg-grey-100 '>
-           <Link to="../SignIn">
+           <Link to="../Swipe">
               <button  className='p-4 w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2  border-green-800'>Börja din matresa </button>
               </Link>
             <Link to="../SignUp">
@@ -76,7 +76,7 @@ const Landing = () => {
          
         </div>
         <div className='button flex justify-end items-right gap-10 p-4 mr-60 mb-16' >
-           <Link to="../SignIn">
+           <Link to="../Swipe">
               <button  className='p-4 w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2  border-green-800'>Börja din matresa </button>
               </Link>
             <Link to="../SignUp">
