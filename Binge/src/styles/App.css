@@ -16,10 +16,10 @@ button#user-menu-button {
     
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    justify-content: center;
     flex-wrap: nowrap;
     align-content: stretch;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 2rem;
 }
 .menu {
@@ -27,16 +27,139 @@ button#user-menu-button {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: stretch;
     justify-content: space-around;
-    align-items: center;
+    align-items: center;  
+    margin-left:10rem;
 }
 .placeholder {
-    margin-top: 80px;
-    width: 500px;
-    height: 500px;
+    margin: 8rem 30rem 0 10rem;;
+    width: 50vh;
+    height: 50vh;
     background-color: grey;
+    
 }
+
+.arrow-section {
+    text-align: center;
+    margin: 80px 0;
+  }
+  
+  .arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid black;
+    margin: 20px auto;
+  }
+  
+  .text {
+    color: #206A5D; 
+    font-weight: bold;
+    font-size: 35px;
+    
+  }
+
+@media screen and (max-width: 768px) {
+    .main {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: space-evenly;
+       
+        align-items: center;
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: stretch;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholder {
+        margin: 6rem 70px 2rem -112px;
+        width: 40vh;
+        height: 40vh;
+    }
+    p.text-xl.font-normal {
+        margin-bottom: 2rem;
+        
+    }
+    h1.font-sans.font-extrabold.text-3xl.text {
+        margin-bottom: 2rem;
+    }
+    .card {
+       
+     margin-left: 2rem;
+     margin-right: 2rem;
+    }
+    .title {
+        margin-right: 8rem;
+    
+    }
+    .button{
+        margin-right: 6rem;
+    }
+}
+
+@media screen and ( max-width: 480px) {
+    .main {
+        margin: auto;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: stretch;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: auto;
+        margin-left: 5rem;
+        margin-top: 1rem;
+    }
+    .placeholder {
+        margin: 4rem 8rem 2rem 0;
+        width: 50vh;
+        height: 50vh;
+    }
+    p.text-xl.font-normal {
+        margin-bottom: 2rem;
+        
+    }
+      p.text-xl.mr-24 {
+            margin: auto;
+        }
+    nav.bg-white.border-gray-500.dark\:bg-gray-200 {
+        width: 120%;
+    }
+    h1.font-sans.font-extrabold.text-3xl.text {
+        margin-bottom: 2rem;
+    }
+    .card {
+       
+     margin-left: 2rem;
+     margin-right: 2rem;
+    }
+    .title {
+        margin-right: 8rem;
+    
+    }
+    .button{
+        margin: auto;
+    }
+}
+  
 
 /*------------------------React Select styles (Nataliia)----------------*/
 .select__multi-value {

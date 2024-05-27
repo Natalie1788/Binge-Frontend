@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../components/BINGE.png";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -41,20 +42,20 @@ const Navbar = () => {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="bg-white border-t border-gray-200 dark:bg-gray-500">
+        <div className="bg-white border-t border-gray-200 dark:bg-green-900">
           <div className="flex flex-col items-center justify-center pt-4 pb-2">
             <Link to="./Cookbook">
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+              <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
                 Min Kokbok
               </a>
             </Link>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
               Få Inspiration
             </a>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
               Kontakt
             </a>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
               Om Oss
             </a>
           </div>
@@ -62,7 +63,7 @@ const Navbar = () => {
             <Link to="../SignIn">
               <button
                 type="button"
-                className="py-2 px-6 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="py-2 px-6 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onClick={toggleMenu}
               >
                 Login
