@@ -14,7 +14,7 @@ function Cookbook() {
   useEffect(() => {
     const userId = 'your-user-id' //Replace with user ID
 
-    fetch(`/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
+    fetch(`https://azurefoodapi.azurewebsites.net/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
       .then(response => response.json())
       .then(data => setDishes(data.dishViewModels || []))
       .catch(error => console.error('Error fetching dishes:', error))
@@ -23,7 +23,7 @@ function Cookbook() {
   const seeFood = (dishName) => {
     const userId = 'your-user-id' //Replace with user ID
 
-    fetch(`/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
+    fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
       .then(data => {
         setIngredients(data)
@@ -41,7 +41,7 @@ function Cookbook() {
     event.stopPropagation()
     const userId = 'your-user-id' //Replace with user ID
 
-    fetch(`/DeleteDish?dishName=${dishName}&userId=${userId}`, {
+    fetch(`https://azurefoodapi.azurewebsites.net/DeleteDish?dishName=${dishName}&userId=${userId}`, {
       method: 'DELETE',
     })
       .then(response => {
