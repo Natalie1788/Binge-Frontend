@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import {FaHeart } from 'react-icons/fa';
 import { MdCancel } from "react-icons/md";
 import { GrRevert } from "react-icons/gr";
+import { FaUser } from "react-icons/fa";
+import { FaArrowsAltH } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
 import Navbar from '../components/Navbar';
 
 const Swipe = () => {
@@ -109,8 +112,8 @@ const SwipeCard = () => {
         </div>
 
         <section className="flex justify-center  items-center ">
-          <div className="flex-col sm:flex-col-reverse ">
-            <div className="flex-col w-full md:w-[25rem] h-[25rem] flex flex-col sm:flex-col-reverse sm:mt-3 items-center justify-center bg-white rounded-lg relative overflow-hidden">
+          <div className="sm:flex-col md:flex-col-reverse ">
+            <div className="flex-col  w-[25rem] h-[25rem] flex sm:flex-col md:flex-col-reverse sm:mt-3  justify-center bg-white rounded-lg relative overflow-hidden">
               <img
                 src="/src/assets/F.jpg"
                 alt={currentDish.key}
@@ -134,11 +137,20 @@ const SwipeCard = () => {
             </div>
           </div>
         </section>
-          <div className="bg-white p-5 my-10 border border-solid border-black flex justify-around ">
-            <p>Smakprofil</p>
-            <p>Svepa</p>
-            <p>Kokbok</p>
+        <nav className="bg-white p-5 my-10 border border-solid border-black flex justify-around ">
+          <div className='flex flex-col items-center'>
+            <FaUser  size={30}/>
+            <h4 className="text-center" > Smakprofil</h4>
           </div>
+          <div className='flex flex-col items-center'>
+            <FaArrowsAltH size={30}/>
+            <h4 className="text-center"> Svepa</h4>
+          </div>
+          <div className='flex flex-col items-center'>
+            <FaBook size={30}/>
+            <h4 className="text-center">Kokbok</h4>
+          </div>
+        </nav>
       </div>
     </>
   );
