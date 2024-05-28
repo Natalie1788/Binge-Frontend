@@ -10,20 +10,37 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    console.log("Form data:", data);  // Debugging log
 
-     localStorage.setItem(
-       data.email,
-       JSON.stringify({
-         firstName: data.firstName,
-         lastName: data.lastName,
-         email: data.email,
-         password: data.password,
-       })
-     );
-  
-    // Navigate to the signin page
-    navigate("/signin");
+    try {
+      const response = await fetch('https://azurefoodapi.azurewebsites.net/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      console.log("Response status:", response.status);  // Debugging log
+      console.log("Response headers:", response.headers);  // Debugging log
+
+      if (response.ok) {
+        // Registration was successful, navigate to the signin page
+        console.log("Registration successful");  // Debugging log
+        navigate("/signin");
+      } else {
+        const errorData = await response.json();
+        console.error('Registration failed:', errorData);
+        // Handle error based on errorData
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
+    }
   };
 
   return (
@@ -33,34 +50,7 @@ const SignUpPage = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md mx-auto grid grid-cols-2 gap-4"
       >
-        <div className="mb-4">
-          <label htmlFor="firstName" className="block mb-1">
-            First Name
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="firstName"
-            {...register("firstName", { required: true })}
-          />
-          {errors.firstName && (
-            <span className="text-red-500">This field is required</span>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="lastName" className="block mb-1">
-            Last Name
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="lastName"
-            {...register("lastName", { required: true })}
-          />
-          {errors.lastName && (
-            <span className="text-red-500">This field is required</span>
-          )}
-        </div>
-     
-        <div className="mb-4">
+        <div className="mb-4 col-span-2">
           <label htmlFor="email" className="block mb-1">
             Email
           </label>
@@ -74,7 +64,7 @@ const SignUpPage = () => {
             <span className="text-red-500">This field is required</span>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 col-span-2">
           <label htmlFor="password" className="block mb-1">
             Password
           </label>
@@ -94,8 +84,7 @@ const SignUpPage = () => {
         >
           Sign Up
         </button>
-
-        <Link to="/signin">Already got an account?</Link>
+        <Link className="col-span-2 text-center mt-4" to="/signin">Already have an account?</Link>
       </form>
     </>
   );
