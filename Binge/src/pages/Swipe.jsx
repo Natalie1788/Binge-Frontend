@@ -10,7 +10,7 @@ import Navbar from '../components/Navbar';
 const Swipe = () => {
   return (
     <>
-      <Navbar />
+      <Navbar  />
       <SwipeCard />
     </>
   );
@@ -96,28 +96,23 @@ const SwipeCard = () => {
 
   return (
     <>
-      <div className="flex flex-col ">
-        <h1 className="flex justify-center font-bold text-4xl mb-6 ">Swipe</h1>
-
-        <div className="flex justify-center items-center flex-col">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="flex  flex-col">
+          <h1 className="flex text-emerald-700  font-bold text-4xl my-6 ">
+            Swipe
+          </h1>
           <h3>
-            Swipa höger för att favorisera en rätt, och spara den till din
-            kokbok.
-          </h3>
-          <h3>Swipa vänster för att visa nästa rätt.</h3>
-          <h3>
-            Tryckte fel? Tryck på ↩ knappen för att gå tillbaka till din senaste
-            rätt.
+            De rätter du gillar och svepar höger på, skapar AI ett recept för
+            och sparar i din kokbok
           </h3>
         </div>
-
         <section className="flex justify-center  items-center ">
-          <div className="sm:flex-col md:flex-col-reverse ">
-            <div className="flex-col  w-[25rem] h-[25rem] flex sm:flex-col md:flex-col-reverse sm:mt-3  justify-center bg-white rounded-lg relative overflow-hidden">
+          <div className="md:flex-col sm:flex-col-reverse ">
+            <div className="flex-col sm:w-full  lg:w-[30rem] h-[25rem] flex sm:flex-col md:flex-col-reverse sm:mt-3  justify-center bg-white rounded-lg relative overflow-hidden">
               <img
                 src="/src/assets/F.jpg"
                 alt={currentDish.key}
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain rounded-sm"
               />
               <h2 className="font-bold text-lg text-center">Spaghet</h2>
             </div>
@@ -137,17 +132,17 @@ const SwipeCard = () => {
             </div>
           </div>
         </section>
-        <nav className="bg-white p-5 my-10 border border-solid border-black flex justify-around ">
-          <div className='flex flex-col items-center'>
-            <FaUser  size={30}/>
-            <h4 className="text-center" > Smakprofil</h4>
+        <nav className="bg-white p-5 my-10 border border-solid border-black flex  self-center justify-around w-full ">
+          <div className="flex flex-col items-center">
+            <FaUser size={30} />
+            <h4 className="text-center"> Smakprofil</h4>
           </div>
-          <div className='flex flex-col items-center'>
-            <FaArrowsAltH size={30}/>
+          <div className="flex flex-col items-center">
+            <FaArrowsAltH size={30} />
             <h4 className="text-center"> Svepa</h4>
           </div>
-          <div className='flex flex-col items-center'>
-            <FaBook size={30}/>
+          <div className="flex flex-col items-center">
+            <FaBook size={30} />
             <h4 className="text-center">Kokbok</h4>
           </div>
         </nav>
