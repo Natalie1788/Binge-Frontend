@@ -1,3 +1,5 @@
+
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import {FaHeart } from 'react-icons/fa';
 import { MdCancel } from "react-icons/md";
@@ -6,23 +8,31 @@ import { FaUser } from "react-icons/fa";
 import { FaArrowsAltH } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import Navbar from '../components/Navbar';
+import Modal from '../components/Modal';
+import { Link } from 'react-router-dom';
 
 const Swipe = () => {
+   const [open, setOpen] = useState(false);
   return (
     <>
       <Navbar  />
-      <SwipeCard />
+      <SwipeCard open={open} setOpen={setOpen}/>
+      
+    
+     
     </>
   );
 };
 
 export default Swipe;
 
-const SwipeCard = () => {
+const SwipeCard = ({open, setOpen}) => {
   const [data, setData] = useState([]);
   const [dishIndex, setDishIndex] = useState(0);
   const likedDishes = [];
   const [dishCounter, setDishCounter] = useState(0); 
+  
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,6 +81,7 @@ const SwipeCard = () => {
 
   const likeDish = async () => {
     likedDishes.push(currentDish);
+    setOpen(true);
     setDishIndex(dishIndex + 1);
     setDishCounter(dishCounter + 1);
 
@@ -132,18 +143,26 @@ const SwipeCard = () => {
             </div>
           </div>
         </section>
+        {open && <Modal open={open} onClose={() => setOpen(false)} />}
+
         <nav className="bg-white p-5 my-10 border border-solid border-black flex  self-center justify-around w-full ">
           <div className="flex flex-col items-center">
-            <FaUser size={30} />
-            <h4 className="text-center"> Smakprofil</h4>
+            <Link to="/profile">
+              <FaUser size={30} className="ml-6" />
+              <h4 className="text-center"> Smakprofil</h4>
+            </Link>
           </div>
           <div className="flex flex-col items-center">
-            <FaArrowsAltH size={30} />
-            <h4 className="text-center"> Svepa</h4>
+            <Link to="/swipe">
+              <FaArrowsAltH size={30} className="ml-2" />
+              <h4 className="text-center"> Svepa</h4>
+            </Link>
           </div>
           <div className="flex flex-col items-center">
-            <FaBook size={30} />
-            <h4 className="text-center">Kokbok</h4>
+            <Link to="/cookbook">
+              <FaBook size={30} className="ml-2" />
+              <h4 className="text-center">Kokbok</h4>
+            </Link>
           </div>
         </nav>
       </div>
