@@ -25,7 +25,7 @@ const Landing = () => {
               <button  className='p-4 w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2  border-green-800'>Börja din matresa </button>
               </Link>
             <Link to="../SignUp">
-                <button className='p-4 w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-500 hover:text-white'>Loga In</button>
+                <button className='p-4 w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-500 hover:text-white'>Logga In</button>
               </Link>
            </div>  
           </div> 
@@ -80,7 +80,7 @@ const Landing = () => {
               <button  className='p-4 w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2  border-green-800'>Börja din matresa </button>
               </Link>
             <Link to="../SignUp">
-                <button className='p-4 w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-500 hover:text-white'>Loga In</button>
+                <button className='p-4 w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-500 hover:text-white'>Logga In</button>
               </Link>
         </div>
        
