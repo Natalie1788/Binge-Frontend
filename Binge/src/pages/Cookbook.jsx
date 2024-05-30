@@ -12,7 +12,7 @@ function Cookbook() {
   const [numOfPeople, setNumOfPeople] = useState(1) //Default: 1 person
 
   useEffect(() => {
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = '519beb0b-dfe6-4872-b3cc-fc4af27f6091' //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
       .then(response => response.json())
