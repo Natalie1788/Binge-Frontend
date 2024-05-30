@@ -1,102 +1,72 @@
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
+import '../styles/style.css'; // Make sure to import your CSS
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-
-     localStorage.setItem(
-       data.email,
-       JSON.stringify({
-         firstName: data.firstName,
-         lastName: data.lastName,
-         email: data.email,
-         password: data.password,
-       })
-     );
+  const { register, handleSubmit, formState: { errors } } = useForm();
   
-    // Navigate to the signin page
-    navigate("/signin");
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const onSubmit = async (data) => {
+    try {
+      console.log('Data to be sent:', data); // Debugging log
+      const response = await fetch('https://azurefoodapi.azurewebsites.net/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Registration successful');
+        setSuccessMessage('Registration successful');
+        setErrorMessage('');
+        navigate("/signin");
+      } else {
+        const errorData = await response.json();
+        console.error('Error response from server:', errorData); // Debugging log
+        setErrorMessage(errorData.title || 'Registration failed');
+        setSuccessMessage('');
+      }
+    } catch (error) {
+      console.error('Error during fetch:', error); // Debugging log
+      setErrorMessage('An error occurred. Please try again.');
+      setSuccessMessage('');
+    }
   };
 
   return (
     <>
       <Navbar />
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md mx-auto grid grid-cols-2 gap-4"
-      >
-        <div className="mb-4">
-          <label htmlFor="firstName" className="block mb-1">
-            First Name
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="firstName"
-            {...register("firstName", { required: true })}
-          />
-          {errors.firstName && (
-            <span className="text-red-500">This field is required</span>
-          )}
+      <div className="container">
+        <div className="registration-form-container">
+          <h2>Registration</h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input id="email" type="email" {...register("email", { required: true })} />
+              {errors.email && <span>This field is required</span>}
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input id="password" type="password" {...register("password", { required: true })} />
+              {errors.password && <span>This field is required</span>}
+            </div>
+            <button type="submit">Register</button>
+            <Link to="/signin">Already have an account? Login</Link>
+          </form>
+          {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
+          {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         </div>
-        <div className="mb-4">
-          <label htmlFor="lastName" className="block mb-1">
-            Last Name
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="lastName"
-            {...register("lastName", { required: true })}
-          />
-          {errors.lastName && (
-            <span className="text-red-500">This field is required</span>
-          )}
-        </div>
-     
-        <div className="mb-4">
-          <label htmlFor="email" className="block mb-1">
-            Email
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="email"
-            type="email"
-            {...register("email", { required: true })}
-          />
-          {errors.email && (
-            <span className="text-red-500">This field is required</span>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block mb-1">
-            Password
-          </label>
-          <input
-            className="border-solid border-black border-2 py-2 px-4 w-full"
-            id="password"
-            type="password"
-            {...register("password", { required: true })}
-          />
-          {errors.password && (
-            <span className="text-red-500">This field is required</span>
-          )}
-        </div>
-        <button
-          className="bg-blue-500 text-white py-2 px-4 col-span-2 rounded hover:bg-blue-600"
-          type="submit"
-        >
-          Sign Up
-        </button>
-
-        <Link to="/signin">Already got an account?</Link>
-      </form>
+      </div>
     </>
   );
 };
