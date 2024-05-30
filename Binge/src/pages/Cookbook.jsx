@@ -21,7 +21,7 @@ function Cookbook() {
   }, [])
 
   const seeFood = (dishName) => {
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = '519beb0b-dfe6-4872-b3cc-fc4af27f6091' //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
@@ -39,7 +39,7 @@ function Cookbook() {
 
   const deleteDish = (dishName, event) => {
     event.stopPropagation()
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = '519beb0b-dfe6-4872-b3cc-fc4af27f6091' //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/DeleteDish?dishName=${dishName}&userId=${userId}`, {
       method: 'DELETE',
