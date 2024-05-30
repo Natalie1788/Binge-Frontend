@@ -16,7 +16,7 @@ const Landing = () => {
         <div className=" flex flex-row gap-1 align-content-stretch justify-content-around mb-1">
           <div className="menu">
             <div className="title">
-            <h1 className='font-sans font-extrabold text-3xl text mb-16 '>Binge: Din personliga kock med AI-skapade recept</h1>
+            <h1 className='font-sans font-extrabold text-3xl text mb-16 '>Foodr: Din personliga kock med AI-skapade recept</h1>
                 <p className='text-xl font-normal'> Välkommen till SwifeChef, där du kan upptäcka, gilla och skapa recept på ett roligt sätt med ett enkelt svep.
               <br /> Svep höger på en maträttsbild du gillar, och låt vår avancerade AI-teknik generera ett skräddarsytt recept som passar dina preferenser. </p>
             </div>

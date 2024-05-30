@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi"; // Assuming you're using React Icons
-import logo from "../components/BINGE.png";
+import Foodr from "../components/Foodr.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         <Link to="/">
           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={logo} className="h-8" alt="logo" />
+            <img src={Foodr} className="h-8" alt="logo" />
           </a>
         </Link>
         <div className="relative">

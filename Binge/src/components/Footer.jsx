@@ -1,5 +1,5 @@
 import "../styles/App.css"
-import logo from "../components/BINGE.png"
+import Foodr from "../components/Foodr.png"
 
 
 function Footer(){
@@ -8,7 +8,7 @@ function Footer(){
         <footer>
             <hr />
             <div className="flex flex-row justify-evenly mt-4 mb-3 ">
-            <img  src={logo} alt="" />
+            <img  src={Foodr} alt="" />
           
             </div>
             <div className="flex justify-center">
