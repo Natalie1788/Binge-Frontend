@@ -19,7 +19,7 @@ function TastePref() {
       }
 
       try {
-        const response = await fetch(`https://azurefoodapi.azurewebsites.net/preferences?userId=${userId}`, {
+        const response = await fetch(`https://azurefoodapi.azurewebsites.net/GetAllergiesAndDiets?userId=${userId}`, {
           headers: {
             'Content-Type': 'application/json',
           },
