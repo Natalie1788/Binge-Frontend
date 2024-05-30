@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FiSearch } from "react-icons/fi"; // Assuming you're using React Icons
 import logo from "../components/BINGE.png";
 
 const Navbar = () => {
@@ -17,52 +18,62 @@ const Navbar = () => {
             <img src={logo} className="h-8" alt="logo" />
           </a>
         </Link>
-        <button
-          onClick={toggleMenu}
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+        <div className="relative">
+          {/* Menu toggle button */}
+          <button
+            onClick={toggleMenu}
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-expanded={isMenuOpen}
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       {isMenuOpen && (
-        <div className="bg-white border-t border-gray-200 dark:bg-gray-500">
+        <div className="bg-white border-t border-gray-200 dark:bg-green-900">
+          {/* Search bar inside menu bar */}
+          <div className="relative p-4">
+            <div className="relative">
+              <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+          {/* End of search bar */}
           <div className="flex flex-col items-center justify-center pt-4 pb-2">
             <Link to="./Cookbook">
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+              <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
                 Min Kokbok
               </a>
             </Link>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
+            <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
               Få Inspiration
             </a>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
-              Kontakt
-            </a>
-            <a href="#" className="block py-2 px-4 text-gray-900 hover:text-blue-700">
-              Om Oss
-            </a>
+            
           </div>
           <div className="flex items-center justify-center pt-4 pb-2">
             <Link to="../SignIn">
               <button
                 type="button"
-                className="py-2 px-6 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="py-2 px-6 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onClick={toggleMenu}
               >
                 Login
