@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import {FaHeart } from 'react-icons/fa';
@@ -36,10 +35,15 @@ const SwipeCard = ({open, setOpen}) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
+      if (!userId) {
+        console.error("No userId found in localStorage");
+        return;
+      }
+
       try {
-        const response = await fetch(
-          // "https://azurefoodapi.azurewebsites.net/PicturesAndUrls"
-        );
+        const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -80,6 +84,12 @@ const SwipeCard = ({open, setOpen}) => {
   };
 
   const likeDish = async () => {
+    const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
+    if (!userId) {
+      console.error("User not found");
+      return;
+    }
+
     likedDishes.push(currentDish);
     setOpen(true);
     setDishIndex(dishIndex + 1);
@@ -91,7 +101,11 @@ const SwipeCard = ({open, setOpen}) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(currentDish.key, currentDish.value)
+        body: JSON.stringify({
+          userId: userId,
+          key: currentDish.key,
+          value: currentDish.value
+        })
       });
 
       if (!response.ok) {
