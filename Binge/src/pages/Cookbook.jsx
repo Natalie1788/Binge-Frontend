@@ -85,10 +85,16 @@ function Cookbook() {
                     key={dish.dishName}
                     className="p-5 bg-white border border-solid border-black hover:bg-gray-20 md:hover:text-blue-700"
                     style={{ maxWidth: '100%', borderRadius: '5%' }}
-                    onClick={() => seeFood(dish.dishName)}
                   >
-                    <p>{dish.dishName}</p>
-                    <button onClick={(event) => deleteDish(dish.dishName, event)}>Delete</button>
+                    <p onClick={() => seeFood(dish.dishName)}>{dish.dishName}</p>
+                    <img
+                      src={dish.url}
+                      alt={dish.dishName}
+                      className='hover:text-green-700'
+                      onClick={() => seeFood(dish.dishName)} // Attach seeFood to img onClick
+                      style={{ cursor: 'pointer' }} // Add pointer cursor to indicate it's clickable
+                    />
+                    <button onClick={(event) => deleteDish(dish.dishName, event)} >Delete</button>
                   </div>
                 ))}
               </div>
