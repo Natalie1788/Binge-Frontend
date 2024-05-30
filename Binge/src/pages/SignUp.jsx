@@ -60,7 +60,7 @@ const SignUpPage = () => {
               {errors.password && <span>This field is required</span>}
             </div>
             <button type="submit" className='my-5'>Skapa Konto</button>
-            <Link to="/signin">Already have an account? Login</Link>
+            <Link to="/signin">Already have an account? Logga In</Link>
           </form>
           {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
           {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
