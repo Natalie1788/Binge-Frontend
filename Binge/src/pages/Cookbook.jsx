@@ -26,7 +26,8 @@ function Cookbook() {
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
       .then(data => {
-        setIngredients(data)
+        console.log('Fetched dish data:', data)
+        setSelectedDish(data)
         setIsFoodOpen(true)
       })
       .catch(error => console.error('Error fetching ingredients and recipe:', error))
