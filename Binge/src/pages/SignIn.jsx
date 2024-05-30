@@ -14,12 +14,12 @@ const SignInPage = () => {
         email: data.email,
         password: data.password,
       });
-
       if (response.status === 200) {
-        // Assuming the response contains user data
-        console.log(response)
-        console.log( response.data.userId+" You Are Successfully Logged In");
-        // Navigate to profile or any other page
+
+        const userId = response.data.userId;
+        localStorage.setItem('userId', userId);
+        console.log(userId + " You Are Successfully Logged In");
+
         navigate("/profile");
       }
     } catch (error) {
