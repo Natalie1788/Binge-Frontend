@@ -3,12 +3,9 @@ import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 import { GrRevert } from "react-icons/gr";
-import { FaUser } from "react-icons/fa";
-import { FaArrowsAltH } from "react-icons/fa";
-import { FaBook } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
-import { Link } from "react-router-dom";
+import { MobileNav } from "../components/mobileNav";
 
 localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
 
@@ -168,26 +165,7 @@ const SwipeCard = ({ open, setOpen }) => {
         </section>
         {open && <Modal open={open} onClose={() => setOpen(false)} />}
 
-        <nav className="bg-white p-5 my-10 border border-solid border-black flex self-center justify-around w-full">
-          <div className="flex flex-col items-center">
-            <Link to="/profile">
-              <FaUser size={30} className="ml-6" />
-              <h4 className="text-center"> Smakprofil</h4>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center">
-            <Link to="/swipe">
-              <FaArrowsAltH size={30} className="ml-2" />
-              <h4 className="text-center"> Svepa</h4>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center">
-            <Link to="/cookbook">
-              <FaBook size={30} className="ml-2" />
-              <h4 className="text-center">Kokbok</h4>
-            </Link>
-          </div>
-        </nav>
+        <MobileNav/>
       </div>
     </>
   );
