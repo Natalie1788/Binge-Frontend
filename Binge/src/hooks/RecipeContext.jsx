@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 const RecipeContext = createContext();
@@ -6,23 +6,23 @@ const RecipeContext = createContext();
 export const useRecipeContext = () => useContext(RecipeContext);
 
 export const RecipeProvider = ({ children }) => {
-  const [selectedIngredients, setSelectedIngredients] = useLocalStorage([], 'selectedIngredients');
+  // const [selectedIngredients, setSelectedIngredients] = useLocalStorage([], 'selectedIngredients');
   const [selectedAllergies, setSelectedAllergies] = useLocalStorage([], 'selectedAllergies');
   const [selectedDiets, setSelectedDiets] = useLocalStorage([], 'selectedDiets');
   //const [selectedTastes, setSelectedTastes] = useLocalStorage([], 'selectedTastes');
 
 //ingredients
-  const addIngredient = (ingredient) => {
-    setSelectedIngredients([...selectedIngredients, ingredient]);
-  };
+  // const addIngredient = (ingredient) => {
+  //   setSelectedIngredients([...selectedIngredients, ingredient]);
+  // };
 
-  const removeIngredient = (ingredientToRemove) => {
-    setSelectedIngredients(selectedIngredients.filter((ingredient) => ingredient !== ingredientToRemove));
-  };
+  // const removeIngredient = (ingredientToRemove) => {
+  //   setSelectedIngredients(selectedIngredients.filter((ingredient) => ingredient !== ingredientToRemove));
+  // };
 
-  const clearIngredients = () => {
-    setSelectedIngredients([]);
-  };
+  // const clearIngredients = () => {
+  //   setSelectedIngredients([]);
+  // };
 
   //Allergies
   const addAllergy = (allergy) => {
@@ -62,9 +62,9 @@ export const RecipeProvider = ({ children }) => {
   const clearDiets = () => {
     setSelectedDiets([]);
   };
-
+// selectedIngredients, addIngredient, removeIngredient, clearIngredients,
   return (
-    <RecipeContext.Provider value={{ selectedIngredients, addIngredient, removeIngredient, clearIngredients, selectedAllergies, addAllergy, removeAllergy, clearAllergies, selectedDiets, addDiet, removeDiet, clearDiets }}>
+    <RecipeContext.Provider value={{  selectedAllergies, addAllergy, removeAllergy, clearAllergies, selectedDiets, addDiet, removeDiet, clearDiets }}>
       {children}
     </RecipeContext.Provider>
   );

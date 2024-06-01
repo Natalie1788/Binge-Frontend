@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import  {useState, useEffect} from 'react';
 import AllergySelection from "../components/SelectAllergy";
-import DietPreferencies from "../components/SelectDiet";
-import SideBar from '../components/SideBar';
+import DietPreferencies from "../components/SelectDiet"
 import { Button } from '@radix-ui/themes';
 import { RecipeProvider, useRecipeContext } from '../hooks/RecipeContext';
-import { Link } from "@radix-ui/themes";
+import { Link } from 'react-router-dom';
 
 function TastePref() {
   const { selectedAllergies, selectedDiets, clearAllergies, addAllergy, clearDiets, addDiet } = useRecipeContext();
@@ -81,26 +80,25 @@ function TastePref() {
 
 
   return (
-    <RecipeProvider>
-      <div className='md:flex justify-center mt-20 gap-10 flex-wrap'>
-
-      <div className="hidden md:block">
-    <SideBar/>
-    </div>
-
-      <div className='container w-2/5'>
-      <h1 className='text-3xl text-teal-700 text-center font-bold'>Smakprofil</h1>
-      <p className='mt-4'>Fyll i dina preferenser för att sedan svepa på bilder på maträtter baserat på dina preferenser och då recept på de bildrätter du gillat</p>
+    <>
       <DietPreferencies />
       <AllergySelection />
+
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <Button onClick={handleSubmit} color="teal" highContrast size="3" variant="classic">
-          <Link style={{color: "white"}} href="/Swipe">Börja svepa</Link>
-        </Button>
+        <Link to="/swipe">
+          <Button
+            color="gray"
+            highContrast
+            size="3"
+            variant="classic"
+            onClick={handleSubmit}
+          >
+            {" "}
+            Få ett recept
+          </Button>{" "}
+        </Link>
       </div>
-      </div>
-      </div>
-    </RecipeProvider> 
+    </>
   );
 }
 

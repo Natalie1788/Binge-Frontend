@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Select from 'react-select'
 import { useRecipeContext } from '../hooks/RecipeContext';
 
@@ -14,7 +14,7 @@ const dietPreferencies = [
 const isMulti = true;
 
 export default function DietPreferencies(){
-  const { selectedDiets, addDiet, removeDiet, clearDiets } = useRecipeContext();
+  const { selectedDiets, addDiet, clearDiets } = useRecipeContext();
 
 const getValue = () => {
   return isMulti ? dietPreferencies.filter(c => selectedDiets.includes(c.value)) : dietPreferencies.find(c => c.value === selectedDiets);

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Select from 'react-select'
 import { useState } from 'react'
 
@@ -18,7 +18,7 @@ const [taste, setTaste] = useState("")
 
 const getValue = () =>{
   if (taste) {
-    return isMulti ? tastePreferencies.filter(c=>taste.indexOf(c.value)>=0) : options.find(c=>c.value === taste)
+    return isMulti ? tastePreferencies.filter(c => taste.indexOf(c.value) >= 0) : tastePreferencies.find(c => c.value === taste)
   } else {
     return isMulti ? [] : ""
   }

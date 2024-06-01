@@ -1,4 +1,3 @@
-import React from 'react'
 import Select from 'react-select'
 import { useRecipeContext } from '../hooks/RecipeContext';
 //import { useState } from 'react'
@@ -15,7 +14,7 @@ const allergiesList = [
 const isMulti = true;
 
 export default function AllergySelection() {
-  const { selectedAllergies, addAllergy, removeAllergy, clearAllergies } = useRecipeContext();
+  const { selectedAllergies, addAllergy,  clearAllergies } = useRecipeContext();
 
   const getValue = () => {
     return isMulti ? allergiesList.filter(c => selectedAllergies.includes(c.value)) : allergiesList.find(c => c.value === selectedAllergies);
