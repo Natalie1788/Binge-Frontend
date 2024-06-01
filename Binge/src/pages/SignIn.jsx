@@ -11,6 +11,7 @@ const SignInPage = () => {
   const handleSubmit = async (data) => {
     try {
       console.log('Sending data:', data); // Log the data being sent
+
       const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
         email: data.email,
         password: data.password,
@@ -20,12 +21,18 @@ const SignInPage = () => {
         }
       });
 
+      // Log the entire response to see its structure
       console.log('API response:', response);
-      if (response.status === 200) {
-        const userId = response.data.userId;
+
+      // Check if response.data contains userId
+      const userId = response.data.userId;
+      if (userId) {
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
         navigate("/cookbook"); // Navigate to the correct path
+      } else {
+        console.error("userId is undefined in the response");
+        alert("Login successful, but no userId returned");
       }
     } catch (error) {
       if (error.response) {
