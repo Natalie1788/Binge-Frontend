@@ -10,7 +10,7 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const response = await axios.post(`https://azurefoodapi.azurewebsites.net/login2?email=${email}&password=${password}`, {
+      const response = await axios.post(`https://azurefoodapi.azurewebsites.net/login2?email=${data.email}&password=${data.password}`, {
         email: data.email,
         password: data.password,
       });
@@ -20,7 +20,7 @@ const SignInPage = () => {
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
 
-        navigate("/profile");
+        navigate("/cookbook");
       }
     } catch (error) {
       if (error.response) {
