@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
 
-localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
+// localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
 
 const Swipe = () => {
   const [open, setOpen] = useState(false);

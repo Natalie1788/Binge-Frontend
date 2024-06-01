@@ -20,6 +20,7 @@ const SignInPage = () => {
         }
       });
 
+      console.log('API response:', response);
       if (response.status === 200) {
         const userId = response.data.userId;
         localStorage.setItem('userId', userId);
