@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Navbar from "../components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import Navbar from '../components/Navbar';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/style.css'; // Import the CSS file
 
 const SignInPage = () => {
@@ -10,23 +10,29 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login2?email=test3%40gmail.com&password=Test123%21', {
+      console.log('Sending data:', data); // Log the data being sent
+      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login2', {
         email: data.email,
         password: data.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
-      if (response.status === 200) {
 
+      if (response.status === 200) {
         const userId = response.data.userId;
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
-
-        navigate("/profile");
+        navigate("/cookbook"); // Navigate to the correct path
       }
     } catch (error) {
       if (error.response) {
-        console.log("Error: ", error.response.data.message);
+        console.error("Error: ", error.response.data);
+        alert(`Error: ${error.response.data.message || 'Login failed. Please try again.'}`); // Display the error message to the user
       } else {
-        console.log("Error: ", error.message);
+        console.error("Error: ", error.message);
+        alert(`Error: ${error.message}`); // Display a generic error message
       }
     }
   };
@@ -45,22 +51,18 @@ const SignInPage = () => {
 };
 
 const SignInForm = ({ onSubmit }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group">
-        <label className="block mb-1" htmlFor="Email">Email</label>
+        <label className="block mb-1" htmlFor="email">Email</label>
         <input
           className="border-solid border-black border-2 py-2 px-4 w-full"
-          id="Email"
-          {...register("email", { required: true })}
+          id="email"
+          {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <span className="error">This field is required</span>}
+        {errors.email && <span className="error">{errors.email.message}</span>}
       </div>
       <div className="input-group">
         <label className="block mb-1" htmlFor="password">Password</label>
@@ -68,9 +70,9 @@ const SignInForm = ({ onSubmit }) => {
           className="border-solid border-black border-2 py-2 px-4 w-full"
           id="password"
           type="password"
-          {...register("password", { required: true })}
+          {...register("password", { required: "Password is required" })}
         />
-        {errors.password && <span className="error">This field is required</span>}
+        {errors.password && <span className="error">{errors.password.message}</span>}
       </div>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"

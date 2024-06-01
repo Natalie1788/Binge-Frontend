@@ -12,7 +12,7 @@ function Cookbook() {
   const [numOfPeople, setNumOfPeople] = useState(1) //Default: 1 person
 
   useEffect(() => {
-    const userId = userId //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
       .then(response => response.json())
@@ -21,7 +21,7 @@ function Cookbook() {
   }, [])
 
   const seeFood = (dishName) => {
-    const userId = userId //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
@@ -40,7 +40,7 @@ function Cookbook() {
 
   const deleteDish = (dishName, event) => {
     event.stopPropagation()
-    const userId = userId //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/DeleteDish?dishName=${dishName}&userId=${userId}`, {
       method: 'DELETE',
