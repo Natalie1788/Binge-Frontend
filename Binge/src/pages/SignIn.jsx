@@ -1,8 +1,8 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
-import { Link, useNavigate } from 'react-router-dom';
+import Navbar from "../components/Navbar";
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/style.css'; // Import the CSS file
 
 const SignInPage = () => {
@@ -10,43 +10,26 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      console.log('Sending data:', data); // Log the data being sent
-
       const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
         email: data.email,
         password: data.password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
       });
+      if (response.status === 200) {
 
-      // Log the entire response to see its structure
-      console.log('API response:', response);
-      console.log('Response data:', response.data);
-
-      // Assuming userId is nested within a user object in the response
-      const userId = response.data.user.userId;
-      if (userId) {
+        const userId = response.data.userId;
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
-        navigate("/cookbook"); // Navigate to the correct path
-      } else {
-        console.error("userId is undefined in the response");
-        alert("Login successful, but no userId returned");
+
+        navigate("/profile");
       }
     } catch (error) {
       if (error.response) {
-        console.error("Error: ", error.response.data);
-        alert(`Error: ${error.response.data.message || 'Login failed. Please try again.'}`); // Display the error message to the user
+        console.log("Error: ", error.response.data.message);
       } else {
-        console.error("Error: ", error.message);
-        alert(`Error: ${error.message}`); // Display a generic error message
+        console.log("Error: ", error.message);
       }
     }
   };
-
-
 
   return (
     <>
@@ -62,18 +45,22 @@ const SignInPage = () => {
 };
 
 const SignInForm = ({ onSubmit }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group">
-        <label className="block mb-1" htmlFor="email">Email</label>
+        <label className="block mb-1" htmlFor="Email">Email</label>
         <input
           className="border-solid border-black border-2 py-2 px-4 w-full"
-          id="email"
-          {...register("email", { required: "Email is required" })}
+          id="Email"
+          {...register("email", { required: true })}
         />
-        {errors.email && <span className="error">{errors.email.message}</span>}
+        {errors.email && <span className="error">This field is required</span>}
       </div>
       <div className="input-group">
         <label className="block mb-1" htmlFor="password">Password</label>
@@ -81,9 +68,9 @@ const SignInForm = ({ onSubmit }) => {
           className="border-solid border-black border-2 py-2 px-4 w-full"
           id="password"
           type="password"
-          {...register("password", { required: "Password is required" })}
+          {...register("password", { required: true })}
         />
-        {errors.password && <span className="error">{errors.password.message}</span>}
+        {errors.password && <span className="error">This field is required</span>}
       </div>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"
