@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import AllergySelection from "../components/SelectAllergy";
 import DietPreferencies from "../components/SelectDiet";
 import SideBar from '../components/SideBar';
-import Navbar from "../components/Navbar";
 import { Button } from '@radix-ui/themes';
 import { RecipeProvider, useRecipeContext } from '../hooks/RecipeContext';
 import { Link } from "@radix-ui/themes";
