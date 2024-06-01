@@ -22,6 +22,15 @@ const SignInPage = () => {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const text = await response.text();
+      if (!text) {
+        throw new Error('Received empty response from the server');
+      }
+
       const responseData = await response.json();
 
       // Log the entire response to see its structure
