@@ -36,7 +36,7 @@ const SignInPage = () => {
       <Navbar />
       <div className="container">
         <div className="registration-form-container">
-          <h2>Sign In</h2>
+          <h2 className="text-xl">Logga In</h2>
           <SignInForm onSubmit={handleSubmit} />
         </div>
       </div>

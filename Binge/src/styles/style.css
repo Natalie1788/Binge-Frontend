@@ -13,14 +13,14 @@ body {
   }
   
   .registration-form-container {
-    background: rgba(4, 52, 2, 0.8);
+    background: #2E6E65;
     padding: 40px;
     border-radius: 10px;
     width: 100%;
     max-width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    color: rgb(17, 13, 13);
+    color: whitesmoke;
   }
   
   .registration-form-container h2 {
@@ -59,7 +59,7 @@ body {
   }
   
   .registration-form-container button {
-    background: #00bfff;
+    background: hwb(243 0% 0%);
     color: white;
     border: none;
     padding: 10px;
@@ -70,12 +70,12 @@ body {
   }
   
   .registration-form-container button:hover {
-    background: #008fbf;
+    background: hwb(243 0% 32%);
   }
   
   .registration-form-container .login-link {
     margin-top: 15px;
     display: block;
-    color: #00bfff;
+    color: white;
   }
   
