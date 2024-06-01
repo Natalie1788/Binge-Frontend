@@ -20,7 +20,7 @@ const SignInPage = () => {
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
 
-        navigate("/profile");
+        navigate("/cookbook");
       }
     } catch (error) {
       if (error.response) {
