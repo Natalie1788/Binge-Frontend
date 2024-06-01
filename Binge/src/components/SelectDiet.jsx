@@ -4,9 +4,9 @@ import { useRecipeContext } from '../hooks/RecipeContext';
 
 const dietPreferencies = [
   { value: 'paleodiet', label: 'Paleodiet' },
-  { value: 'vegansk', label: 'Vegansk' },
-  { value: 'vegetarisk', label: 'Vegetarisk' },
-  { value: 'ketogen', label: 'Ketogen' },
+  { value: 'vegan', label: 'Vegan' },
+  { value: 'vegetarian', label: 'Vegetarian' },
+  { value: 'keto', label: 'Keto' },
   { value: 'raw-food', label: 'Raw-food' },
   { value: 'LCHF-diet', label: 'LCHF-diet' },
   

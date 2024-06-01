@@ -3,12 +3,12 @@ import { useRecipeContext } from '../hooks/RecipeContext';
 //import { useState } from 'react'
 
 const allergiesList = [
-  { value: 'nötter', label: 'Nötter' },
+  { value: 'nuts', label: 'Nuts' },
   { value: 'citrus', label: 'Citrus' },
-  { value: 'ägg', label: 'Ägg' },
+  { value: 'egg', label: 'Egg' },
   { value: 'gluten', label: 'Gluten' },
-  { value: 'laktos', label: 'Laktos' },
-  { value: 'fruktos', label: 'Fruktos' },
+  { value: 'lactose', label: 'Lactose' },
+  { value: 'fructose', label: 'Fructose' },
   
 ]
 const isMulti = true;
