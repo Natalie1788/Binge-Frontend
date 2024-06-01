@@ -11,7 +11,7 @@ const SignInPage = () => {
   const handleSubmit = async (data) => {
     try {
       console.log('Sending data:', data); // Log the data being sent
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login2', {
+      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
         email: data.email,
         password: data.password,
       }, {
