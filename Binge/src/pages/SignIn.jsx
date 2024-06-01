@@ -23,9 +23,10 @@ const SignInPage = () => {
 
       // Log the entire response to see its structure
       console.log('API response:', response);
+      console.log('Response data:', response.data);
 
-      // Check if response.data contains userId
-      const userId = response.data.userId;
+      // Assuming userId is nested within a user object in the response
+      const userId = response.data.user.userId;
       if (userId) {
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
@@ -44,6 +45,8 @@ const SignInPage = () => {
       }
     }
   };
+
+
 
   return (
     <>
