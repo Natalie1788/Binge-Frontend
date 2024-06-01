@@ -10,7 +10,7 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
+      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login2', {
         email: data.email,
         password: data.password,
       });
