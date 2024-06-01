@@ -1,8 +1,7 @@
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import Navbar from "../components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import Navbar from '../components/Navbar';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/style.css'; // Import the CSS file
 
 const SignInPage = () => {
@@ -10,27 +9,38 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      console.log('Sending data:', data);
+      console.log('Sending data:', data); // Log the data being sent
 
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login2', {
-        email: data.email,
-        password: data.password,
+      const response = await fetch('https://azurefoodapi.azurewebsites.net/login2', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
       });
-      
-      if (response.status === 200) {
 
-        const userId = response.data.userId;
+      const responseData = await response.json();
+
+      // Log the entire response to see its structure
+      console.log('Full API response:', responseData);
+
+      // Assuming userId is directly in responseData or nested within a user object
+      const userId = responseData.userId || responseData.user?.userId;
+
+      if (userId) {
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
-
-        navigate("/cookbook");
+        navigate("/cookbook"); // Navigate to the correct path
+      } else {
+        console.error("userId is undefined in the response data");
+        alert("Login successful, but no userId returned");
       }
     } catch (error) {
-      if (error.response) {
-        console.log("Error: ", error.response.data.message);
-      } else {
-        console.log("Error: ", error.message);
-      }
+      console.error("Error: ", error);
+      alert(`Error: ${error.message}`); // Display a generic error message
     }
   };
 
@@ -48,22 +58,18 @@ const SignInPage = () => {
 };
 
 const SignInForm = ({ onSubmit }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group">
-        <label className="block mb-1" htmlFor="Email">Email</label>
+        <label className="block mb-1" htmlFor="email">Email</label>
         <input
           className="border-solid border-black border-2 py-2 px-4 w-full"
-          id="Email"
-          {...register("email", { required: true })}
+          id="email"
+          {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <span className="error">This field is required</span>}
+        {errors.email && <span className="error">{errors.email.message}</span>}
       </div>
       <div className="input-group">
         <label className="block mb-1" htmlFor="password">Password</label>
@@ -71,9 +77,9 @@ const SignInForm = ({ onSubmit }) => {
           className="border-solid border-black border-2 py-2 px-4 w-full"
           id="password"
           type="password"
-          {...register("password", { required: true })}
+          {...register("password", { required: "Password is required" })}
         />
-        {errors.password && <span className="error">This field is required</span>}
+        {errors.password && <span className="error">{errors.password.message}</span>}
       </div>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"
