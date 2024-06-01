@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
           {/* End of search bar */}
           <div className="flex flex-col items-center justify-center pt-4 pb-2">
-            <Link to="./Cookbook">
+            <Link to="../Cookbook">
               <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
                 Min Kokbok
               </a>
