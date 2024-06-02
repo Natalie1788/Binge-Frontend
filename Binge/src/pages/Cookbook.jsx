@@ -82,11 +82,11 @@ function Cookbook() {
             {dishes.length > 0 ? (
               dishes.map(dish => (
                 <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4" aria-label={`Recipe card for ${dish.dishName}`}>
-                  <div className='flex flex-row-reverse'>
-                    <p>{dish.dishName}</p>
-                    <button onClick={(event) => deleteDish(dish.dishName, event)} className="mt-2">
-                      <TrashIcon className="h-6 w-6 text-red-500 hover:text-red-700" />
+                  <div className='flex flex-row'>
+                    <button onClick={(event) => deleteDish(dish.dishName, event)} className="">
+                      <TrashIcon className="h-6 w-auto hover:text-red-500" />
                     </button>
+                    <p className='text-center w-full'>{dish.dishName}</p>
                   </div>
 
                   <p onClick={() => seeFood(dish.dishName)} className="cursor-pointer"></p>
