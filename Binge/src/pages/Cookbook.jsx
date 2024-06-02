@@ -59,9 +59,9 @@ function Cookbook() {
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-[auto_1fr] gap-4 bg-gray-300 p-5">
+      <div className="grid grid-cols-[auto_1fr] gap-4 bg-gray-300 p-5 pt-0 ">
 
-        <div className="p-5 bg-white border border-black rounded-lg">
+        <div className="p-5 bg-white border border-black rounded-lg h-40 sticky top-20 z-10">
           <Link to='../Profile'>
             <p className='hover:bg-gray-200 hover:text-blue-700 p-2 rounded'>Smakprofil</p>
           </Link>
@@ -74,7 +74,7 @@ function Cookbook() {
         </div>
 
         <div className="flex flex-col items-center w-full">
-          <h1 className="font-bold text-xl">Din kokbok - Gillade recept</h1>
+          <h1 className="text">Din kokbok - Gillade recept</h1>
           <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
 
           {/* Grid layout for the dishes. */}
