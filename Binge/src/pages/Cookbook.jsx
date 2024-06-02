@@ -3,8 +3,8 @@ import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
+import { TrashIcon } from '@heroicons/react/24/outline'
 import '/src/styles/Cookbook.css'
-import { TrashIcon } from '@heroicons/react/outline'
 
 function Cookbook() {
   const [isFoodOpen, setIsFoodOpen] = useState(false)
@@ -95,9 +95,7 @@ function Cookbook() {
                     src={dish.url}
                     alt={dish.dishName}
                     onClick={() => seeFood(dish.dishName)}
-                    className="cursor-pointer mt-2 max-h-72 w-full object-cover rounded-lg
-
-                    "
+                    className="cursor-pointer mt-2 max-h-72 w-full object-cover rounded-lg "
                   />
 
                 </div>
@@ -124,9 +122,7 @@ function Cookbook() {
       </div>
 
       {/* Popup window for liked food. */}
-      <div className="myChosenFood">
-        {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
-      </div>
+      {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
 
       <Footer />
     </>
