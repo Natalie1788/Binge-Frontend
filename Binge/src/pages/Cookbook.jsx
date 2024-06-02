@@ -71,7 +71,7 @@ function Cookbook() {
         </button>
 
         {/* Sidebar */}
-        <div className={`p-5 bg-white border border-black rounded-lg h-auto md:h-40 md:sticky md:top-20 z-10 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+        <div className={`p-5 bg-white border border-black rounded-lg h-auto md:h-40 md:sticky md:top-20 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
           <Link to='../Profile'>
             <p className='hover:bg-gray-200 hover:text-blue-700 p-2 rounded'>Smakprofil</p>
           </Link>
