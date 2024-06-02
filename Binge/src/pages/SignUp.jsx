@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/style.css'; // Make sure to import your CSS
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons from react-icons
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const SignUpPage = () => {
   
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
 
   const onSubmit = async (data) => {
     try {
@@ -41,7 +43,8 @@ const SignUpPage = () => {
       setErrorMessage('An error occurred. Please try again.');
       setSuccessMessage('');
     }
-  };  
+  };
+
   return (
     <>
       <Navbar />
@@ -56,7 +59,16 @@ const SignUpPage = () => {
             </div>
             <div className="input-group">
               <label htmlFor="password">Password</label>
-              <input id="password" type="password" {...register("password", { required: true })} />
+              <div className="password-container">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  {...register("password", { required: true })}
+                />
+                <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               {errors.password && <span>This field is required</span>}
             </div>
             <button type="submit" className='my-5'>Skapa Konto</button>

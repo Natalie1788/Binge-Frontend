@@ -20,7 +20,7 @@ body {
     max-width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    color: whitesmoke;
+    color: black;
   }
   
   .registration-form-container h2 {
@@ -77,5 +77,14 @@ body {
     margin-top: 15px;
     display: block;
     color: white;
+  }
+  .password-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container .eye-icon {
+    margin-left: -30px; /* Adjust this value based on your design */
+    cursor: pointer;
   }
   

@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/style.css'; // Import the CSS file
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons from react-icons
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -15,7 +17,6 @@ const SignInPage = () => {
         password: data.password,
       });
       if (response.status === 200) {
-
         const userId = response.data.userId;
         localStorage.setItem('userId', userId);
         console.log(userId + " You Are Successfully Logged In");
@@ -51,6 +52,8 @@ const SignInForm = ({ onSubmit }) => {
     formState: { errors },
   } = useForm();
 
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group">
@@ -64,12 +67,17 @@ const SignInForm = ({ onSubmit }) => {
       </div>
       <div className="input-group">
         <label className="block mb-1" htmlFor="password">Password</label>
-        <input
-          className="border-solid border-black border-2 py-2 px-4 w-full"
-          id="password"
-          type="password"
-          {...register("password", { required: true })}
-        />
+        <div className="password-container">
+          <input
+            className="border-solid border-black border-2 py-2 px-4 w-full"
+            id="password"
+            type={showPassword ? "text" : "password"}
+            {...register("password", { required: true })}
+          />
+          <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
         {errors.password && <span className="error">This field is required</span>}
       </div>
       <button
