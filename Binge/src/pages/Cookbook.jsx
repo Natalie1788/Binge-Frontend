@@ -4,6 +4,7 @@ import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
 import { Link } from "react-router-dom"
 import '/src/styles/Cookbook.css'
+import { TrashIcon } from '@heroicons/react/outline'
 
 function Cookbook() {
   const [isFoodOpen, setIsFoodOpen] = useState(false)
@@ -77,19 +78,28 @@ function Cookbook() {
           <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
 
           {/* Grid layout for the dishes. */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-4xl mt-4">
+          <div className="grid grid-cols-2 gap-4 w-full max-w-3xl mt-4">
             {dishes.length > 0 ? (
               dishes.map(dish => (
-                <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4 text-center" aria-label={`Recipe card for ${dish.dishName}`}>
-                  <p>{dish.dishName}</p>
+                <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4" aria-label={`Recipe card for ${dish.dishName}`}>
+                  <div className='flex flex-row-reverse'>
+                    <p>{dish.dishName}</p>
+                    <button onClick={(event) => deleteDish(dish.dishName, event)} className="mt-2">
+                      <TrashIcon className="h-6 w-6 text-red-500 hover:text-red-700" />
+                    </button>
+                  </div>
+
                   <p onClick={() => seeFood(dish.dishName)} className="cursor-pointer"></p>
+
                   <img
                     src={dish.url}
                     alt={dish.dishName}
                     onClick={() => seeFood(dish.dishName)}
-                    className="cursor-pointer mt-2"
+                    className="cursor-pointer mt-2 max-h-72 w-full object-cover rounded-lg
+
+                    "
                   />
-                  <button onClick={(event) => deleteDish(dish.dishName, event)} className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete</button>
+
                 </div>
               ))
             ) : (
