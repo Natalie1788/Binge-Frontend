@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
+import { MobileNav } from "../components/mobileNav"
 import { Link } from "react-router-dom"
+import { TrashIcon } from '@heroicons/react/24/outline'
 import '/src/styles/Cookbook.css'
 
 function Cookbook() {
@@ -10,9 +12,10 @@ function Cookbook() {
   const [dishes, setDishes] = useState([])
   const [selectedDish, setSelectedDish] = useState(null)
   const [numOfPeople, setNumOfPeople] = useState(1) //Default: 1 person
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId') //Replace with user ID
+    const userId = localStorage.getItem('userId')
 
     fetch(`https://azurefoodapi.azurewebsites.net/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
       .then(response => response.json())
@@ -21,7 +24,7 @@ function Cookbook() {
   }, [])
 
   const seeFood = (dishName) => {
-    const userId = localStorage.getItem('userId') //Replace with user ID
+    const userId = localStorage.getItem('userId')
 
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
@@ -40,7 +43,7 @@ function Cookbook() {
 
   const deleteDish = (dishName, event) => {
     event.stopPropagation()
-    const userId = localStorage.getItem('userId') //Replace with user ID
+    const userId = localStorage.getItem('userId')
 
     fetch(`https://azurefoodapi.azurewebsites.net/DeleteDish?dishName=${dishName}&userId=${userId}`, {
       method: 'DELETE',
@@ -58,69 +61,61 @@ function Cookbook() {
   return (
     <>
       <Navbar />
-      <div className="relative bg-gray-300 border-b border-solid border-black p-5" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
-        <div className="p-5 bg-white border border-solid border-black" style={{ borderRadius: '10%', minWidth: '10%', maxWidth: '100%' }}>
-          <Link to='../Profile'>
-            <p className='hover:bg-gray-20 md:hover:text-blue-700'>Smakprofil </p>
-          </Link>
-          <Link to='../Swipe'>
-            <p className='hover:bg-gray-20 md:hover:text-blue-700'>Svepa</p>
-          </Link>
-          <Link to="../Cookbook">
-            <p className='hover:bg-gray-20 md:hover:text-blue-700'>Kokbok</p>
-          </Link>
-        </div>
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-full">
-          <div className="flex flex-col justify-center items-center w-full">
-            <h1 className="flex justify-around items-center rt-r-weight-bold">
-              Din kokbok - Gillade recept
-            </h1>
-            <p className='flex justify-around'>
-              Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!
-            </p>
-            <div className="justify-center items-center w-full" style={{ maxWidth: '10%', margin: '0 auto' }}>
-              <div className="flex justify-around w-full">
-                {/* Swiping right on the Swipe page -> Generate divs akin to below. */}
-                {dishes.map(dish => (
-                  <div
-                    key={dish.dishName}
-                    className="p-5 bg-white border border-solid border-black hover:bg-gray-20 md:hover:text-blue-700"
-                    style={{ maxWidth: '100%', borderRadius: '5%' }}
-                  >
-                    <p onClick={() => seeFood(dish.dishName)}>{dish.dishName}</p>
-                    <img
-                      src={dish.url}
-                      alt={dish.dishName}
-                      className='hover:text-green-700'
-                      onClick={() => seeFood(dish.dishName)} // Attach seeFood to img onClick
-                      style={{ cursor: 'pointer' }} // Add pointer cursor to indicate it's clickable
-                    />
-                    <button onClick={(event) => deleteDish(dish.dishName, event)} >Delete</button>
+      <div className="md:grid md:gap-4 bg-gray-300 p-5 pt-0">
+
+        {/* Toggle button for mobile sidebar */}
+        
+
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text">Din kokbok - Gillade recept</h1>
+          <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
+
+          {/* Grid layout for the dishes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mt-4">
+            {dishes.length > 0 ? (
+              dishes.map(dish => (
+                <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4" aria-label={`Recipe card for ${dish.dishName}`}>
+                  <div className='flex flex-row'>
+                    <button onClick={(event) => deleteDish(dish.dishName, event)} className="">
+                      <TrashIcon className="h-6 w-auto hover:text-red-500" />
+                    </button>
+                    <p className='text-center w-full'>{dish.dishName}</p>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="mt-4">
-              <label htmlFor="numOfPeople" className="mr-2">Number of People:</label>
-              <input
-                id="numOfPeople"
-                type="number"
-                value={numOfPeople}
-                onChange={(e) => setNumOfPeople(e.target.value)}
-                className="p-2 border border-solid border-black"
-                min="1"
-              />
-            </div>
+
+                  <p onClick={() => seeFood(dish.dishName)} className="cursor-pointer"></p>
+
+                  <img
+                    src={dish.url}
+                    alt={dish.dishName}
+                    onClick={() => seeFood(dish.dishName)}
+                    className="cursor-pointer mt-2 max-h-72 w-full object-cover rounded-lg"
+                  />
+                </div>
+              ))
+            ) : (
+              <p className="col-span-2 text-center">No liked recipes found.</p>
+            )}
+          </div>
+
+          {/* Number of people */}
+          <div className="mt-4">
+            <label htmlFor="numOfPeople" className="mr-2">Number of People:</label>
+            <input
+              id="numOfPeople"
+              type="number"
+              value={numOfPeople}
+              onChange={(e) => setNumOfPeople(e.target.value)}
+              className="p-2 border border-black rounded"
+              min="1"
+            />
           </div>
         </div>
       </div>
 
-      {/* Popup window for liked food. 
-      To add in future: connect with specific clicked saved food as a general function.*/}
-      <div className="myChosenFood">
-        {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
-      </div>
-      {/* <Popup /> */}
+      {/* Popup window for liked food */}
+      {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
+
+      <MobileNav />
       <Footer />
     </>
   )
