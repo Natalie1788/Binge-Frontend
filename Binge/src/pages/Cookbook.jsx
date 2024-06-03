@@ -66,7 +66,19 @@ function Cookbook() {
 
 
         <div className="flex flex-col items-center w-full">
-        <ArrowMenuCookbook />
+          <ArrowMenuCookbook />
+          {/* Number of people */}
+          <div className="mt-4">
+            <label htmlFor="numOfPeople" className="mr-2">Amount of people eating:</label>
+            <input
+              id="numOfPeople"
+              type="number"
+              value={numOfPeople}
+              onChange={(e) => setNumOfPeople(e.target.value)}
+              className="p-2 border border-black rounded"
+              min="1"
+            />
+          </div>
           <h1 className="text md:hidden">Your Cookbook - Liked Recipes</h1>
           <p className='md:hidden'>Click on the cards to see a more detailed ai-generated recipe!</p>
 
@@ -97,18 +109,6 @@ function Cookbook() {
             )}
           </div>
 
-          {/* Number of people */}
-          <div className="mt-4">
-            <label htmlFor="numOfPeople" className="mr-2">Number of People:</label>
-            <input
-              id="numOfPeople"
-              type="number"
-              value={numOfPeople}
-              onChange={(e) => setNumOfPeople(e.target.value)}
-              className="p-2 border border-black rounded"
-              min="1"
-            />
-          </div>
         </div>
       </div>
 
