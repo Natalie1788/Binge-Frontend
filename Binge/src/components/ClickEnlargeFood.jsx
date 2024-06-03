@@ -4,7 +4,7 @@ const Popup = ({ onClose, dish }) => {
     if (!dish) return null; // Return null if no dish is selected
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-100" onClick={onClose}>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 absolute" onClick={onClose}>
             <div className="bg-white p-4 rounded shadow-lg" onClick={(e) => e.stopPropagation()}>
                 <h2 className="text-xl font-bold">{dish.dishName}</h2>
                 <img src={dish.imageUrl} alt={dish.dishName} className="w-full h-auto" />

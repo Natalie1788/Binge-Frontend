@@ -115,7 +115,7 @@ function Cookbook() {
       {/* Popup window for liked food */}
       {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
 
-      <Footer />
+      {/* <Footer /> */}
       <MobileNav />
     </>
   )
