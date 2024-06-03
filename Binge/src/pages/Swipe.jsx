@@ -6,6 +6,7 @@ import { GrRevert } from "react-icons/gr";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
+import ArrowMenuSwipe from "../components/ArrowMenuSwipe";
 
 // localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
 
@@ -14,6 +15,7 @@ const Swipe = () => {
   return (
     <>
       <Navbar />
+      <ArrowMenuSwipe />
       <SwipeCard open={open} setOpen={setOpen} />
     </>
   );
@@ -128,27 +130,19 @@ const SwipeCard = ({ open, setOpen }) => {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full">
-        <div className="flex flex-col">
-          <h1 className="flex text-emerald-700 font-bold text-4xl my-6">
-            Swipe
-          </h1>
-          <h3>
-            De rätter du gillar och svepar höger på, skapar AI ett recept för
-            och sparar i din kokbok
-          </h3>
-        </div>
+       
         <section className="flex justify-center items-center">
-          <div className="md:flex-col sm:flex-col-reverse">
-            <div className="flex-col sm:w-full lg:w-[30rem] h-[25rem] flex sm:flex-col md:flex-col-reverse sm:mt-3 justify-center bg-white rounded-lg relative overflow-hidden">
+          <div className="flex-col ">
+            <div className="flex-col sm:w-full lg:w-[30rem] h-[24rem] flex sm:flex-col md:flex-col-reverse justify-center bg-white  relative overflow-hidden">
               <img
                 src={currentDish.value}
                 alt={currentDish.key}
-                className="w-full h-auto object-contain rounded-sm"
+                className="w-full h-auto object-contain rounded-lg"
               />
-              <h2 className="font-bold text-lg text-center mx-4">
+            </div>
+              <h2 className="font-bold text-lg text-center my-2">
                 {currentDish.key}
               </h2>
-            </div>
             <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4 bg-white bg-opacity-75"></div>
             <div className="flex space-x-10 p-2 justify-center">
               <button className="text-3xl" onClick={showPrevious}>
