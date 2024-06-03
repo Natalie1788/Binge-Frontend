@@ -27,14 +27,17 @@ export default Swipe;
 const SwipeCard = ({ open, setOpen }) => {
   const [data, setData] = useState([]);
   const [dishIndex, setDishIndex] = useState(0);
+  const [loading, setLoading] = useState(false); // State to track loading status
   const likedDishes = [];
   const [dishCounter, setDishCounter] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Start loading
       const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
       if (!userId) {
         console.error("No userId found in localStorage");
+        setLoading(false); // Stop loading
         return;
       }
 
@@ -49,8 +52,9 @@ const SwipeCard = ({ open, setOpen }) => {
         setData(newData);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Stop loading regardless of the outcome
       }
-      
     };
 
     fetchData();
@@ -85,8 +89,6 @@ const SwipeCard = ({ open, setOpen }) => {
       console.error("User not found");
       return;
     }
-
-    
 
     try {
       const response = await fetch(
@@ -128,6 +130,21 @@ const SwipeCard = ({ open, setOpen }) => {
     setDishCounter(dishCounter + 1);
   };
 
+  if (loading) {
+    return (
+      <div style={{
+        position: 'absolute', // Set position to absolute
+        top: '50%', // Center vertically
+        left: '50%', // Center horizontally
+        transform: 'translate(-50%, -50%)', // Adjust position to truly center
+        fontSize: '24px', // Increase font size
+        fontWeight: 'bold' // Optional: make the text bold
+      }}>
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full ">
@@ -148,13 +165,22 @@ const SwipeCard = ({ open, setOpen }) => {
             </h2>
 
             <div className="flex space-x-10 p-2 justify-center">
-              <button className="text-3xl" onClick={showPrevious}>
+              <button
+                className="text-3xl hover:text-blue-700"
+                onClick={showPrevious}
+              >
                 <GrRevert />
               </button>
-              <button className="text-3xl" onClick={showNext}>
+              <button
+                className="text-3xl hover:text-red-700"
+                onClick={showNext}
+              >
                 <FaTrashCan />
               </button>
-              <button className="text-3xl" onClick={likeDish}>
+              <button
+                className="text-3xl hover:text-emerald-700"
+                onClick={likeDish}
+              >
                 <PiCookingPotFill />
               </button>
             </div>
