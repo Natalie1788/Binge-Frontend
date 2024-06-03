@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
+import { MobileNav } from "../components/mobileNav"
 import { Link } from "react-router-dom"
 import { TrashIcon } from '@heroicons/react/24/outline'
 import '/src/styles/Cookbook.css'
@@ -132,6 +133,7 @@ function Cookbook() {
       {/* Popup window for liked food */}
       {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
 
+      <MobileNav />
       <Footer />
     </>
   )
