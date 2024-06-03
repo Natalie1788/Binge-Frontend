@@ -11,7 +11,7 @@ const dietPreferencies = [
 ]
 const isMulti = false;
 
-export default function DietPreferencies(){
+export default function DietPreferencies() {
   const { selectedDiets, addDiet, clearDiets } = useRecipeContext();
 
   const getValue = () => {
@@ -21,15 +21,15 @@ export default function DietPreferencies(){
 
   const onChange = (newValue) => {
     const newDiet = newValue ? newValue.value : null;
-    clearDiets(); 
+    clearDiets();
     if (newDiet) {
       addDiet(newDiet); // Ensure addDiet updates the context with a string
     }
   };
 
-  return(
-    <div className='container w-2/4 mx-auto mt-12'>
-      <h1 className='text-lg'>Dietpreferenser</h1>
+  return (
+    <div className='mt-3 mx-5'>
+      <h1 className='text-lg font-bold	'>Diet</h1>
       <Select
         isMulti={isMulti}
         name="diets"
