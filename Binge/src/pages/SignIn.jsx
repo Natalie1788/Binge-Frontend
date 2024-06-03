@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import '../styles/style.css'; // Import the CSS file
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons from react-icons
+import '../styles/style.css'; 
+import Footer from "../components/Footer"
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -37,10 +38,11 @@ const SignInPage = () => {
       <Navbar />
       <div className="container">
         <div className="registration-form-container">
-          <h2 className="text-xl">Logga In</h2>
+          <h2 className="text-xl">Login</h2>
           <SignInForm onSubmit={handleSubmit} />
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
@@ -84,7 +86,7 @@ const SignInForm = ({ onSubmit }) => {
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"
         type="submit"
       >
-        Log In
+        Login
       </button>
       <Link className="login-link" to="/signup">Do not have an Account?</Link>
     </form>

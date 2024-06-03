@@ -52,7 +52,7 @@ export const RecipeProvider = ({ children }) => {
 
   // Diets
   const addDiet= (diet) => {
-    setSelectedDiets([...selectedDiets, diet]);
+    setSelectedDiets(diet); // Assuming setSelectedDiets is the state setter for selectedDiets
   };
 
   const removeDiet = (dietToRemove) => {

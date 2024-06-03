@@ -2,17 +2,28 @@ import  {useState, useEffect} from 'react';
 import AllergySelection from "../components/SelectAllergy";
 import DietPreferencies from "../components/SelectDiet"
 import { Button } from '@radix-ui/themes';
-import { RecipeProvider, useRecipeContext } from '../hooks/RecipeContext';
-import { Link } from 'react-router-dom';
+import { useRecipeContext } from '../hooks/RecipeContext';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function TastePref() {
-  const { selectedAllergies, selectedDiets, clearAllergies, addAllergy, clearDiets, addDiet } = useRecipeContext();
+  const navigate = useNavigate();
+
+  const { selectedAllergies, selectedDiets, clearAllergies, addAllergy, clearDiets,  } = useRecipeContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPreferences = async () => {
       const userId = localStorage.getItem('userId');
       if (!userId) {
+        setLoading(false);
+        return;
+      }
+
+      // Check if there are already selected allergies or diets
+      if (selectedAllergies.length === 0 && selectedDiets.length === 0) {
+        console.log('No allergies or diets to fetch');
         setLoading(false);
         return;
       }
@@ -29,7 +40,7 @@ function TastePref() {
           clearAllergies();
           clearDiets();
           data.allergies.forEach(allergy => addAllergy(allergy));
-          data.diets.forEach(diet => addDiet(diet));
+         
         } else {
           throw new Error('Failed to fetch preferences');
         }
@@ -41,9 +52,10 @@ function TastePref() {
     };
 
     fetchPreferences();
-  }, [clearAllergies, addAllergy, clearDiets, addDiet]);
+  }, []);
 
   const handleSubmit = async () => {
+    
     const userId = localStorage.getItem('userId');
     if (!userId) {
       console.error('User is not logged in');
@@ -72,6 +84,8 @@ function TastePref() {
     } catch (error) {
       console.error('Error:', error);
     }
+
+    navigate("/Swipe")
   };
 
   if (loading) {
@@ -85,7 +99,7 @@ function TastePref() {
       <AllergySelection />
 
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <Link to="/swipe">
+       
           <Button
             color="gray"
             highContrast
@@ -96,7 +110,7 @@ function TastePref() {
             {" "}
             Få ett recept
           </Button>{" "}
-        </Link>
+       
       </div>
     </>
   );

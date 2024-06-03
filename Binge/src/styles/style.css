@@ -6,14 +6,16 @@ body {
   }
   
   .container {
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     height: 100vh;
   }
   
   .registration-form-container {
-    background: #2E6E65;
+    background: #e5e7eb;
     padding: 40px;
     border-radius: 10px;
     width: 100%;
@@ -76,7 +78,7 @@ body {
   .registration-form-container .login-link {
     margin-top: 15px;
     display: block;
-    color: white;
+    color: black;
   }
   .password-container {
     display: flex;

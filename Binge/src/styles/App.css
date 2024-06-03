@@ -45,6 +45,8 @@ button#user-menu-button {
 .arrow-section {
     text-align: center;
     margin: 80px 0;
+    color: #206A5D;
+  
   }
   
   .arrow {
@@ -108,8 +110,7 @@ button#user-menu-button {
     .button{
         margin-right: 6rem;
     }
-}
-
+}  
 @media screen and ( max-width: 480px) {
     .main {
         margin: auto;
@@ -164,8 +165,7 @@ button#user-menu-button {
     .button{
         margin: auto;
     }
-}
-  
+} 
 
 /*------------------------React Select styles (Nataliia)----------------*/
 .select__multi-value {
