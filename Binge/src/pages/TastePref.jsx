@@ -96,7 +96,7 @@ function TastePref() {
 
   return (
     <>
-      <div className='px-1 bg-white dark:bg-gray-200'>
+      <div className='min-h-screen px-1 bg-white dark:bg-gray-200'>
         <div className='text-center'>
           <h1 className="text">Profile</h1>
           <p className="text-gray-600 px-1">Fill in your preferences and then swipe on images of dishes based on your preferences, and get recipes for the dishes you liked.</p>
