@@ -9,6 +9,8 @@ const ProtectedRoute = ({ children }) => {
         return <Navigate to="/signup" replace />;
     }
 
+    
+
     return children;
 };
 
