@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
 import ArrowMenuSwipe from "../components/ArrowMenuSwipe";
+import "../styles/cardBorder.css";
 
 
 
@@ -155,18 +156,32 @@ const SwipeCard = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-300 p-0 m-0">
+      <div className="flex flex-col items-center  w-full min-h-screen bg-gray-300 ">
         <section className="flex   ">
-          <div className="flex-col">
+          <div className="flex-col ">
+            <div className=" flex flex-col items-center">
+
+              <h1 className="flex text-emerald-700 font-bold text-4xl  mt-10 mb-3  md:hidden">
+                Swipe
+              </h1>
+              <h3 className="md:hidden px-5">
+                De rätter du gillar och svepar höger på, skapar AI ett recept
+                för och sparar i din kokbok
+              </h3>
+            </div>
+            
             <div
               className="flex-col sm:w-full lg:w-[30rem] h-[24rem] flex sm:flex-col md:flex-col-reverse sm:mt-3 justify-center
              rounded-lg relative overflow-hidden"
             >
+          
+
               <img
                 src={currentDish.value}
                 alt={currentDish.key}
-                className="w-full h-auto object-contain rounded-lg"
-              />
+                className="w-full h-auto object-contain rounded-lg "
+                />
+                
             </div>
             <h2 className="font-bold text-lg text-center my-2">
               {currentDish.key}
