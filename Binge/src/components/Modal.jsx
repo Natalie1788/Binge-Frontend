@@ -22,18 +22,18 @@ const ModalContent = ({ onClose }) => {
     `}
       onClick={(e) => e.stopPropagation()}
     >
-      <h1 className="text-2xl font-bold text-emerald-800 text-center"> Du har gillat ett recept!</h1>
+      <h1 className="text-2xl font-bold text-emerald-800 text-center"> You liked a Recipe!</h1>
       <p className="py-8 text-center max-w-screen-sm">
-        Fantastiskt val! 🎉
-        <br/> Du har precis lagt till detta recept i din kokbok.
-        Fortsätt svepa för flera recept eller gå till ditt nya recept i din
-        kokbok.
+        Great choice! 🎉
+        <br/> You have just added this recipe to your cookbook.
+        Continue swiping for more recipes or go to your
+        cookbook.
       </p>
       <div className="flex justify-center gap-4">
 
 
-      <button className="bg-emerald-800 text-white rounded-md p-2" onClick={onClose}>Fortsätt Svepa</button>
-      <button className="border-2 border-black text-black rounded-md p-2"> <Link to="../cookbook">Till din Kokbok</Link></button>
+      <button className="bg-emerald-800 text-white rounded-md p-2" onClick={onClose}>Keep Swiping</button>
+      <button className="border-2 border-black text-black rounded-md p-2"> <Link to="../cookbook">Your Cookbook</Link></button>
       </div>
     </div>
   );

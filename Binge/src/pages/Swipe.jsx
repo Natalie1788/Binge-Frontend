@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-
+// Icon imports
 import { GrRevert } from "react-icons/gr";
 import { PiCookingPotFill } from "react-icons/pi";
 import { FaTrashCan } from "react-icons/fa6";
+// Component Imports
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
 import ArrowMenuSwipe from "../components/ArrowMenuSwipe";
-import "../styles/cardBorder.css";
 
 
 
+//Main site component
 const Swipe = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -25,14 +26,17 @@ const Swipe = () => {
 
 export default Swipe;
 
+
+//Component  for handling food image and option buttons
 const SwipeCard = ({ open, setOpen }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]);  //State to set fetched data from backend
   const [dishIndex, setDishIndex] = useState(0);
   const [loading, setLoading] = useState(false); // State to track loading status
-  const likedDishes = [];
+  const likedDishes = [];  
   const [dishCounter, setDishCounter] = useState(0);
 
-  // Define fetchData outside of useEffect to use it in showNext
+  //  Fetch method for obtaining food imgurl and name
+  //will only run if user is logged in and has a valid userid
   const fetchData = async () => {
     setLoading(true);
     const userId = localStorage.getItem("userId");
@@ -41,7 +45,7 @@ const SwipeCard = ({ open, setOpen }) => {
       setLoading(false);
       return;
     }
-
+// fetches data and saves it to data state
     try {
       const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
       const response = await fetch(url);
@@ -60,8 +64,9 @@ const SwipeCard = ({ open, setOpen }) => {
 
   useEffect(() => {
     fetchData();
-  }, []); // Initial fetch on component mount
+  }, []); 
 
+  //at 5 swiped dishes, re-fetch 10 dishes
   useEffect(() => {
     if (dishCounter === 5) {
       fetchData();
@@ -76,21 +81,27 @@ const SwipeCard = ({ open, setOpen }) => {
   const currentDish = dishes[dishIndex] || {};
   console.log(currentDish);
 
+
+  //button function when skipping a dish
   const showNext = () => {
     setDishIndex(prevIndex => {
       const nextIndex = prevIndex + 1;
       if (nextIndex === data.length) {
         setDishCounter(prevCounter => prevCounter + 1);
-        return 0; // Reset to the first dish if we reach the end of the array
+        return 0; 
       }
       return nextIndex;
     });
   };
 
+  //button function for returning to last swiped dish
   const showPrevious = () => {
     setDishIndex(Math.max(dishIndex - 1, 0));
   };
 
+  //button function for liking a dish,  checks if userid is valid
+  //if valid, posts the dish to the database
+  //if not, error message
   const likeDish = async () => {
     const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
     if (!userId) {
@@ -113,8 +124,8 @@ const SwipeCard = ({ open, setOpen }) => {
           }),
         }
       );
-
-      const responseText = await response.text(); // Get response as text
+//error handling
+      const responseText = await response.text(); 
       console.log("Response Status:", response.status);
       console.log("Response Text:", responseText);
 
@@ -123,8 +134,8 @@ const SwipeCard = ({ open, setOpen }) => {
       }
 
       if (responseText) {
-        // Check if response text is not empty
-        const result = JSON.parse(responseText); // Parse response as JSON
+     
+        const result = JSON.parse(responseText); 
         console.log("Dish liked successfully:", result);
       } else {
         console.log("Dish liked successfully, but received an empty response.");
@@ -132,12 +143,13 @@ const SwipeCard = ({ open, setOpen }) => {
     } catch (error) {
       console.error("Error liking dish:", error);
     }
-    likedDishes.push(currentDish);
-    setOpen(true);
-    setDishIndex(dishIndex + 1);
-    setDishCounter(dishCounter + 1);
+    likedDishes.push(currentDish); //adds dish to likedDishes array
+    setOpen(true); //opens modal
+    setDishIndex(dishIndex + 1); //increments dishIndex
+    setDishCounter(dishCounter + 1); //increments dishCounter
   };
 
+  //if loading, display loading message
   if (loading) {
     return (
       <div style={{
@@ -147,12 +159,15 @@ const SwipeCard = ({ open, setOpen }) => {
         transform: 'translate(-50%, -50%)',
         fontSize: '24px', 
         fontWeight: 'bold',
-        textAlign: 'center' // Ensures text is centered if it wraps to a new line
+        textAlign: 'center' 
       }}>
         Loading...
       </div>
     );
   }
+//returns swipe card component
+//175- 183  conditional text on mobile sized device
+
 
   return (
     <>
