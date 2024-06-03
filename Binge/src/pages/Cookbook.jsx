@@ -67,8 +67,8 @@ function Cookbook() {
 
         <div className="flex flex-col items-center w-full">
         <ArrowMenuCookbook />
-          <h1 className="text md:hidden">Din kokbok - Gillade recept</h1>
-          <p className='md:hidden'>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
+          <h1 className="text md:hidden">Your Cookbook - Liked Recipes</h1>
+          <p className='md:hidden'>Click on the cards to see a more detailed ai-generated recipe!</p>
 
           {/* Grid layout for the dishes */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl mt-4">

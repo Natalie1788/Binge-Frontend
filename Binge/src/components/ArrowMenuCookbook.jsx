@@ -27,8 +27,8 @@ const ArrowMenuCookbook = () => {
       </div>
 
       <div className='flex flex-col items-center w-full'>
-        <h1 className="text">Din kokbok - Gillade recept</h1>
-        <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
+        <h1 className="text">Your Cookbook - Liked Recipes</h1>
+        <p>Click on the cards to see a more detailed ai-generated recipe!</p>
       </div>
     </div>
   )
