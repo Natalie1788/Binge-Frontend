@@ -97,24 +97,25 @@ function TastePref() {
 
   return (
     <>
-      <DietPreferencies />
-      <AllergySelection />
+      <div className='px-1'>
+        <div className='text-center'>
+          <h1 className="text">Profile</h1>
+          <p className="text-gray-600 px-1">Fill in your preferences and then swipe on images of dishes based on your preferences, and get recipes for the dishes you liked.</p>
+        </div>
 
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <DietPreferencies />
+        <AllergySelection />
 
-        <Button
-          color="gray"
-          highContrast
-          size="3"
-          variant="classic"
-          onClick={handleSubmit}
-        >
-          {" "}
-          Få ett recept
-        </Button>{" "}
+        <div className='w-full flex justify-center'>
+          <Button
+            style={{ backgroundColor: "#2E6E65", color: 'white', width: "80%" }}
+            onClick={handleSubmit}
+          >
+            Start Swiping
+          </Button>
+        </div>
 
       </div>
-
       <div className="fixed bottom-0 w-full">
         <MobileNav />
       </div>
