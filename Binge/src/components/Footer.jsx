@@ -1,5 +1,5 @@
 import "../styles/App.css";
-import Foodr from "../components/Foodr.png";
+import Foodr from "../img/Foodr.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';

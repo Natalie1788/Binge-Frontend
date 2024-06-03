@@ -1,10 +1,10 @@
 import Navbar from '../components/Navbar'
 import Footer from "../components/Footer"
-import Foodr from "../components/Frame 105.png"
+import Foodr from "../img/Frame 105.png"
 import { Link } from "react-router-dom"
-import smakProfil from '../components/ProfilLanding.png'
-import Swipe from '../components/SwipeLanding.png'
-import KokBok from '../components/KokbokLanding.png'
+import smakProfil from '../img/ProfilLanding.png'
+import Swipe from '../img/SwipeLanding.png'
+import KokBok from '../img/KokbokLanding.png'
 import "../styles/App.css"
 
 const Landing = () => {
@@ -22,11 +22,11 @@ const Landing = () => {
               </p>
             </div>
             <div className='flex flex-col md:flex-row gap-4 md:gap-10 bg-grey-100'>
-              <Link to="../Swipe">
-                <button className='p-4 w-full md:w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2 border-green-800'>Börja din matresa</button>
-              </Link>
               <Link to="../SignUp">
-                <button className='p-4 w-full md:w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-400 hover:text-white'>Logga In</button>
+                <button className='p-4 w-full md:w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2 border-green-800'>Register</button>
+              </Link>
+              <Link to="../SignIn">
+                <button className='p-4 w-full md:w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-400 hover:text-white'>Login</button>
               </Link>
             </div>
           </div>
@@ -76,10 +76,10 @@ const Landing = () => {
         </div>
         <div className='button flex flex-col md:flex-row justify-end items-center gap-4 p-4 md:mr-60 mb-16'>
           <Link to="../Swipe">
-            <button className='p-4 w-full md:w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2 border-green-800'>Börja din matresa</button>
+            <button className='p-4 w-full md:w-48 h-16 bg-green-800 text-white hover:bg-green-700 hover:border-green-700 rounded-lg border-2 border-green-800'>Register</button>
           </Link>
           <Link to="../SignUp">
-            <button className='p-4 w-full md:w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-400 hover:text-white'>Logga In</button>
+            <button className='p-4 w-full md:w-48 h-16 bg-white-100 rounded-lg border-2 border-grey-500 hover:bg-gray-400 hover:text-white'>Login</button>
           </Link>
         </div>
       </menu>

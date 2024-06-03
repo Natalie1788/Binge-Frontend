@@ -12,7 +12,7 @@ function Cookbook() {
   const [numOfPeople, setNumOfPeople] = useState(1) //Default: 1 person
 
   useEffect(() => {
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/AllDishesAndUrlsConnectedToUser?userId=${userId}`)
       .then(response => response.json())
@@ -21,12 +21,13 @@ function Cookbook() {
   }, [])
 
   const seeFood = (dishName) => {
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
       .then(data => {
-        setIngredients(data)
+        console.log('Fetched dish data:', data)
+        setSelectedDish(data)
         setIsFoodOpen(true)
       })
       .catch(error => console.error('Error fetching ingredients and recipe:', error))
@@ -39,7 +40,7 @@ function Cookbook() {
 
   const deleteDish = (dishName, event) => {
     event.stopPropagation()
-    const userId = 'your-user-id' //Replace with user ID
+    const userId = localStorage.getItem('userId') //Replace with user ID
 
     fetch(`https://azurefoodapi.azurewebsites.net/DeleteDish?dishName=${dishName}&userId=${userId}`, {
       method: 'DELETE',
@@ -85,10 +86,16 @@ function Cookbook() {
                     key={dish.dishName}
                     className="p-5 bg-white border border-solid border-black hover:bg-gray-20 md:hover:text-blue-700"
                     style={{ maxWidth: '100%', borderRadius: '5%' }}
-                    onClick={() => seeFood(dish.dishName)}
                   >
-                    <p>{dish.dishName}</p>
-                    <button onClick={(event) => deleteDish(dish.dishName, event)}>Delete</button>
+                    <p onClick={() => seeFood(dish.dishName)}>{dish.dishName}</p>
+                    <img
+                      src={dish.url}
+                      alt={dish.dishName}
+                      className='hover:text-green-700'
+                      onClick={() => seeFood(dish.dishName)} // Attach seeFood to img onClick
+                      style={{ cursor: 'pointer' }} // Add pointer cursor to indicate it's clickable
+                    />
+                    <button onClick={(event) => deleteDish(dish.dishName, event)} >Delete</button>
                   </div>
                 ))}
               </div>

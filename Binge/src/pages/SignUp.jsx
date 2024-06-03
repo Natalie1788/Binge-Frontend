@@ -52,7 +52,7 @@ const SignUpPage = () => {
       <Navbar />
       <div className="container">
         <div className="registration-form-container">
-          <h2 className='text-xl'>Skapa Konto</h2>
+          <h2 className='text-xl'>Register</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-group">
               <label htmlFor="email">Email</label>
@@ -73,8 +73,8 @@ const SignUpPage = () => {
               </div>
               {errors.password && <span>This field is required</span>}
             </div>
-            <button type="submit" className='my-5'>Skapa Konto</button>
-            <Link to="/signin">Already have an account? Logga In</Link>
+            <button type="submit" className='my-5'>Register</button>
+            <Link to="/signin">Already have an account? Login</Link>
           </form>
           {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
           {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}

@@ -13,7 +13,7 @@ const SignInPage = () => {
 
   const handleSubmit = async (data) => {
     try {
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
+      const response = await axios.post(`https://azurefoodapi.azurewebsites.net/login2?email=${data.email}&password=${data.password}`, {
         email: data.email,
         password: data.password,
       });
@@ -38,7 +38,7 @@ const SignInPage = () => {
       <Navbar />
       <div className="container">
         <div className="registration-form-container">
-          <h2 className="text-xl">Logga In</h2>
+          <h2 className="text-xl">Login</h2>
           <SignInForm onSubmit={handleSubmit} />
         </div>
       </div>
@@ -86,7 +86,7 @@ const SignInForm = ({ onSubmit }) => {
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"
         type="submit"
       >
-        Log In
+        Login
       </button>
       <Link className="login-link" to="/signup">Do not have an Account?</Link>
     </form>

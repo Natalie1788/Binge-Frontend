@@ -78,7 +78,7 @@ body {
   .registration-form-container .login-link {
     margin-top: 15px;
     display: block;
-    color: white;
+    color: black;
   }
   .password-container {
     display: flex;
