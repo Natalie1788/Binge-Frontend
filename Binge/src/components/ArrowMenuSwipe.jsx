@@ -28,8 +28,8 @@ const ArrowMenuSwipe = () => {
           </Link>
           <p className="p-3">Back to Preferences</p>
         </div>
-         <div className="flex flex-col">
-          <h1 className="flex text-emerald-700 font-bold text-4xl my-3">
+         <div className="flex flex-col items-center">
+          <h1 className="flex text-emerald-700 font-bold text-4xl my-3  ">
             Swipe
           </h1>
           <h3>

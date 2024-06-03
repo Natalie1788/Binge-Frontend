@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from '../components/ProtectedRoute';
+import LoggedinRoute from "../components/LoggedinRoute";
 
 import Errorpage from "../pages/Errorpage";
 import Landing from "../pages/Landing";
@@ -13,7 +14,7 @@ import Cookbook from "../pages/Cookbook";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing/>,
+    element: <LoggedinRoute><Landing/></LoggedinRoute>,
     errorElement: <Errorpage />,
   },
   {
@@ -23,12 +24,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: <SignIn />,
+    element: <LoggedinRoute><SignIn /></LoggedinRoute>,
     errorElement: <Errorpage />,
   },
   {
     path: "/signup",
-    element: <Signup />,
+    element: <LoggedinRoute><Signup /></LoggedinRoute>,
     errorElement: <Errorpage />,
   },
   {
