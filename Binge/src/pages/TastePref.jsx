@@ -96,25 +96,27 @@ function TastePref() {
 
   return (
     <>
-      <div className='min-h-screen px-1 bg-white dark:bg-gray-200'>
-        <div className='text-center'>
-          <h1 className="text">Profile</h1>
-          <p className="text-gray-600 px-1">Fill in your preferences and then swipe on images of dishes based on your preferences, and get recipes for the dishes you liked.</p>
+      <div className='flex'>
+
+        <div className='min-h-screen px-1 bg-white dark:bg-gray-200 w-full'>
+          <div className='text-center'>
+            <h1 className="text">Profile</h1>
+            <p className="text-gray-600 px-1">Fill in your preferences and then swipe on images of dishes based on your preferences, and get recipes for the dishes you liked.</p>
+          </div>
+
+          <DietPreferencies />
+          <AllergySelection />
+
+          <div className="w-full flex justify-center mt-80">
+            <button
+              className="bg-[#2E6E65] text-white w-4/5 rounded-lg p-1"
+              onClick={handleSubmit}
+            >
+              Start Swiping
+            </button>
+          </div>
+
         </div>
-
-        <DietPreferencies />
-        <AllergySelection />
-
-        <div className="w-full flex justify-center">
-          <button
-            className="bg-[#2E6E65] text-white w-4/5"
-            onClick={handleSubmit}
-          >
-            Start Swiping
-          </button>
-        </div>
-
-
       </div>
       <div className="fixed bottom-0 w-full">
         <MobileNav />
