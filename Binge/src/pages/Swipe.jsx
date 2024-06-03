@@ -50,7 +50,7 @@ const SwipeCard = ({ open, setOpen }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-      
+
     };
 
     fetchData();
@@ -86,7 +86,7 @@ const SwipeCard = ({ open, setOpen }) => {
       return;
     }
 
-    
+
 
     try {
       const response = await fetch(
@@ -162,7 +162,10 @@ const SwipeCard = ({ open, setOpen }) => {
         </section>
         {open && <Modal open={open} onClose={() => setOpen(false)} />}
       </div>
-      <MobileNav />
+
+      <div className="fixed bottom-0 w-full">
+        <MobileNav />
+      </div>
     </>
   );
 };

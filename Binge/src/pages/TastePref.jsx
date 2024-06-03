@@ -1,16 +1,18 @@
-import  {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import AllergySelection from "../components/SelectAllergy";
 import DietPreferencies from "../components/SelectDiet"
 import { Button } from '@radix-ui/themes';
 import { useRecipeContext } from '../hooks/RecipeContext';
 import { useNavigate } from 'react-router-dom';
+import { MobileNav } from "../components/mobileNav"
+
 
 
 
 function TastePref() {
   const navigate = useNavigate();
 
-  const { selectedAllergies, selectedDiets, clearAllergies, addAllergy, clearDiets,  } = useRecipeContext();
+  const { selectedAllergies, selectedDiets, clearAllergies, addAllergy, clearDiets, } = useRecipeContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ function TastePref() {
           clearAllergies();
           clearDiets();
           data.allergies.forEach(allergy => addAllergy(allergy));
-         
+
         } else {
           throw new Error('Failed to fetch preferences');
         }
@@ -55,7 +57,7 @@ function TastePref() {
   }, []);
 
   const handleSubmit = async () => {
-    
+
     const userId = localStorage.getItem('userId');
     if (!userId) {
       console.error('User is not logged in');
@@ -99,18 +101,22 @@ function TastePref() {
       <AllergySelection />
 
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-       
-          <Button
-            color="gray"
-            highContrast
-            size="3"
-            variant="classic"
-            onClick={handleSubmit}
-          >
-            {" "}
-            Få ett recept
-          </Button>{" "}
-       
+
+        <Button
+          color="gray"
+          highContrast
+          size="3"
+          variant="classic"
+          onClick={handleSubmit}
+        >
+          {" "}
+          Få ett recept
+        </Button>{" "}
+
+      </div>
+
+      <div className="fixed bottom-0 w-full">
+        <MobileNav />
       </div>
     </>
   );

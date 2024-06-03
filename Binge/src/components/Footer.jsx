@@ -10,7 +10,7 @@ function Footer(){
         <footer>
             <hr />
             <Link to="/">
-             <a href="#" className="flex justify-center mt-8 mb-3 items-center space-x-3 rtl:space-x-reverse">
+             <a href="#" className="flex justify-center mb-3 items-center space-x-3 rtl:space-x-reverse">
                  <img src={Foodr} className="h-8" alt="logo" />
              </a>
             </Link>
