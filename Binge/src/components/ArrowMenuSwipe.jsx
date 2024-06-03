@@ -2,24 +2,27 @@ import { useState } from "react";
 import { TiArrowLeftOutline, TiArrowRightOutline, TiArrowLeftThick, TiArrowRightThick } from "react-icons/ti";
 import { Link } from "react-router-dom";
 const ArrowMenuSwipe = () => {
-    const [hover, setHover] = useState(false);
-    const toggleHover = () => {
-        setHover(prevHover => !prevHover);
+    const [lefthover, setLeftHover] = useState(false);
+    const toggleLeftHover = () => {
+        setLeftHover(prevLeftHover => !prevLeftHover);
     }
-
+    const [righthover, setRightHover] = useState(false);
+    const toggleRightHover = () => {
+        setRightHover(prevRightHover => !prevRightHover);
+    }
     return (
       <div className="md:flex items-center justify-between w-full h-1/4  sm:hidden">
         <div className="flex flex-col items-center">
           <Link to="/profile">
-            {hover ? (
+            {lefthover ? (
               <TiArrowLeftThick
                 className="text-5xl"
-                onMouseLeave={toggleHover}
+                onMouseLeave={toggleLeftHover}
               />
             ) : (
               <TiArrowLeftOutline
                 className="text-5xl"
-                onMouseEnter={toggleHover}
+                onMouseEnter={toggleLeftHover}
               />
             )}
           </Link>
@@ -36,15 +39,15 @@ const ArrowMenuSwipe = () => {
         </div>
         <div className="flex flex-col items-center">
           <Link to="/cookbook">
-            {hover ? (
+            {righthover ? (
               <TiArrowRightThick
                 className="text-5xl"
-                onMouseLeave={toggleHover}
+                onMouseLeave={toggleRightHover}
               />
             ) : (
               <TiArrowRightOutline
                 className="text-5xl"
-                onMouseEnter={toggleHover}
+                onMouseEnter={toggleRightHover}
               />
             )}
           </Link>
