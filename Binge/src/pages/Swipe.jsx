@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { FaHeart } from "react-icons/fa";
-import { MdCancel } from "react-icons/md";
+
 import { GrRevert } from "react-icons/gr";
+import { PiCookingPotFill } from "react-icons/pi";
+import { FaTrashCan } from "react-icons/fa6";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
@@ -129,38 +130,39 @@ const SwipeCard = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full">
-       
-        <section className="flex justify-center items-center">
-          <div className="flex-col ">
-            <div className="flex-col sm:w-full lg:w-[30rem] h-[24rem] flex sm:flex-col md:flex-col-reverse justify-center bg-white  relative overflow-hidden">
+      <div className="flex flex-col items-center justify-center w-full ">
+        <section className="flex   ">
+          <div className="flex-col">
+            <div
+              className="flex-col sm:w-full lg:w-[30rem] h-[24rem] flex sm:flex-col md:flex-col-reverse sm:mt-3 justify-center
+             rounded-lg relative overflow-hidden"
+            >
               <img
                 src={currentDish.value}
                 alt={currentDish.key}
                 className="w-full h-auto object-contain rounded-lg"
               />
             </div>
-              <h2 className="font-bold text-lg text-center my-2">
-                {currentDish.key}
-              </h2>
-            <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mb-4 bg-white bg-opacity-75"></div>
+            <h2 className="font-bold text-lg text-center my-2">
+              {currentDish.key}
+            </h2>
+
             <div className="flex space-x-10 p-2 justify-center">
               <button className="text-3xl" onClick={showPrevious}>
                 <GrRevert />
               </button>
               <button className="text-3xl" onClick={showNext}>
-                <MdCancel />
+                <FaTrashCan />
               </button>
               <button className="text-3xl" onClick={likeDish}>
-                <FaHeart />
+                <PiCookingPotFill />
               </button>
             </div>
           </div>
         </section>
         {open && <Modal open={open} onClose={() => setOpen(false)} />}
-
-        <MobileNav/>
       </div>
+      <MobileNav />
     </>
   );
 };
