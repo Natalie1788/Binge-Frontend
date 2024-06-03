@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { TiArrowLeftOutline, TiArrowRightOutline, TiArrowLeftThick, TiArrowRightThick } from "react-icons/ti";
 import { Link } from "react-router-dom";
+
+// 7-10 && 11-14 states and functions for the arrow changing icons on hover
 const ArrowMenuSwipe = () => {
     const [lefthover, setLeftHover] = useState(false);
     const toggleLeftHover = () => {
