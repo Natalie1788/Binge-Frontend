@@ -60,7 +60,7 @@ function Cookbook() {
   return (
     <>
       <Navbar />
-      <div className="md:grid md:gap-4 bg-gray-200 p-5 pt-0">
+      <div className="md:grid md:gap-4 bg-gray-200 p-5 pt-0 min-h-screen">
 
         {/* Toggle button for mobile sidebar */}
 
