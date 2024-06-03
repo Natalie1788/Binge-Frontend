@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
 import { MobileNav } from "../components/mobileNav"
-import { Link } from "react-router-dom"
+import ArrowMenuSwipe from "../components/ArrowMenuSwipe"
 import { TrashIcon } from '@heroicons/react/24/outline'
 import '/src/styles/Cookbook.css'
 
@@ -61,17 +61,18 @@ function Cookbook() {
   return (
     <>
       <Navbar />
+      
       <div className="md:grid md:gap-4 bg-gray-300 p-5 pt-0">
 
         {/* Toggle button for mobile sidebar */}
-        
+
 
         <div className="flex flex-col items-center w-full">
           <h1 className="text">Din kokbok - Gillade recept</h1>
           <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
 
           {/* Grid layout for the dishes */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl mt-4">
             {dishes.length > 0 ? (
               dishes.map(dish => (
                 <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4" aria-label={`Recipe card for ${dish.dishName}`}>
