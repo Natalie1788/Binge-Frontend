@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import AllergySelection from "../components/SelectAllergy";
 import DietPreferencies from "../components/SelectDiet"
-import { Button } from '@radix-ui/themes';
 import { useRecipeContext } from '../hooks/RecipeContext';
 import { useNavigate } from 'react-router-dom';
 import { MobileNav } from "../components/mobileNav"
@@ -106,14 +105,15 @@ function TastePref() {
         <DietPreferencies />
         <AllergySelection />
 
-        <div className='w-full flex justify-center'>
-          <Button
-            style={{ backgroundColor: "#2E6E65", color: 'white', width: "80%" }}
+        <div className="w-full flex justify-center">
+          <button
+            className="bg-[#2E6E65] text-white w-4/5"
             onClick={handleSubmit}
           >
             Start Swiping
-          </Button>
+          </button>
         </div>
+
 
       </div>
       <div className="fixed bottom-0 w-full">
