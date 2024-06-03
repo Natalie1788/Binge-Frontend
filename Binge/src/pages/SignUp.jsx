@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import '../styles/style.css'; // Make sure to import your CSS
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons from react-icons
+import '../styles/style.css'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import Footer from "../components/Footer"
+
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -78,6 +80,7 @@ const SignUpPage = () => {
           {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

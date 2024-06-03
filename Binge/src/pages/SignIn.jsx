@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import '../styles/style.css'; // Import the CSS file
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons from react-icons
+import '../styles/style.css'; 
+import Footer from "../components/Footer"
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const SignInPage = () => {
           <SignInForm onSubmit={handleSubmit} />
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

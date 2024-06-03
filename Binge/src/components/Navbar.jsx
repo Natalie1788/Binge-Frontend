@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi"; // Assuming you're using React Icons
 import Foodr from "../components/Foodr.png"
 
 const Navbar = () => {
@@ -19,7 +18,7 @@ const Navbar = () => {
           </a>
         </Link>
         <div className="relative">
-          {/* Menu toggle button */}
+          
           <button
             onClick={toggleMenu}
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
