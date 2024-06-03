@@ -9,12 +9,12 @@ const allergiesList = [
   { value: 'gluten', label: 'Gluten' },
   { value: 'lactose', label: 'Lactose' },
   { value: 'fructose', label: 'Fructose' },
-  
+
 ]
 const isMulti = true;
 
 export default function AllergySelection() {
-  const { selectedAllergies, addAllergy,  clearAllergies } = useRecipeContext();
+  const { selectedAllergies, addAllergy, clearAllergies } = useRecipeContext();
 
   const getValue = () => {
     return isMulti ? allergiesList.filter(c => selectedAllergies.includes(c.value)) : allergiesList.find(c => c.value === selectedAllergies);
@@ -22,26 +22,26 @@ export default function AllergySelection() {
 
   const onChange = (newValue) => {
     const newAllergies = isMulti ? newValue.map(v => v.value) : newValue.value;
-    clearAllergies(); 
+    clearAllergies();
     newAllergies.forEach((allergy) => {
       addAllergy(allergy);
     });
   };
 
-  
-  return(
+
+  return (
     //<div className='container w-2/4 mx-auto mt-12'>
-    <div className='mt-8'>
-      <h1 className='text-lg'>Allergier</h1>
+    <div className='mt-8 mx-5'>
+      <h1 className='text-lg font-bold'>Allergies</h1>
       <Select
-    isMulti
-    name="allergiesList"
-    options={allergiesList}
-    className="basic-multi-select"
-    classNamePrefix="select"
-    onChange={onChange}
-    value={getValue()}
-  />
+        isMulti
+        name="allergiesList"
+        options={allergiesList}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        onChange={onChange}
+        value={getValue()}
+      />
     </div>
   )
 }

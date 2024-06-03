@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const MobileNav = () => {
   return (
-    <nav className="bg-white p-5 border-t border-solid border-black justify-around w-full absolute bottom-0 sm:flex md:hidden z-50">
+    <nav className="bg-white p-5 border-t border-solid border-black justify-around w-full bottom-0 sm:flex md:hidden sticky z-50">
       <div className="flex flex-col items-center">
         <NavLink to="/profile" className={({ isActive }) => isActive ? 'underline font-bold' : ''}>
           <FaUser size={30} className="ml-2" />

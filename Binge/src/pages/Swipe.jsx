@@ -194,7 +194,10 @@ const SwipeCard = ({ open, setOpen }) => {
         </section>
         {open && <Modal open={open} onClose={() => setOpen(false)} />}
       </div>
-      <MobileNav />
+
+      <div className="fixed bottom-0 w-full">
+        <MobileNav />
+      </div>
     </>
   );
 };
