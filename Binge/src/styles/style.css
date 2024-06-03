@@ -6,14 +6,16 @@ body {
   }
   
   .container {
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     height: 100vh;
   }
   
   .registration-form-container {
-    background: #2E6E65;
+    background: #e5e7eb;
     padding: 40px;
     border-radius: 10px;
     width: 100%;
