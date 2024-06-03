@@ -9,7 +9,7 @@ import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
 import ArrowMenuSwipe from "../components/ArrowMenuSwipe";
 
-// localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
+
 
 const Swipe = () => {
   const [open, setOpen] = useState(false);
@@ -31,34 +31,44 @@ const SwipeCard = ({ open, setOpen }) => {
   const likedDishes = [];
   const [dishCounter, setDishCounter] = useState(0);
 
+  // Define fetchData outside of useEffect to use it in showNext
+  const fetchData = async () => {
+    setLoading(true);
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      console.error("No userId found in localStorage");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const newData = await response.json();
+      console.log(newData);
+      setData(newData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true); // Start loading
-      const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
-      if (!userId) {
-        console.error("No userId found in localStorage");
-        setLoading(false); // Stop loading
-        return;
-      }
-
-      try {
-        const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const newData = await response.json();
-        console.log(newData);
-        setData(newData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false); // Stop loading regardless of the outcome
-      }
-    };
-
     fetchData();
-  }, [setData]);
+  }, []); // Initial fetch on component mount
+
+  useEffect(() => {
+    if (dishCounter === 5) {
+      fetchData();
+      setData([]);
+      setDishIndex(0);
+      setDishCounter(0); // Reset dishCounter after fetching new data
+    }
+  }, [dishCounter]); // This useEffect triggers when dishCounter changes
 
   const dishes = data; // No need for unnecessary `dishes` array
 
@@ -66,17 +76,14 @@ const SwipeCard = ({ open, setOpen }) => {
   console.log(currentDish);
 
   const showNext = () => {
-    setDishIndex(dishIndex + 1);
-
-    if (dishIndex === dishes.length - 1) {
-      setDishCounter(dishCounter + 1);
-      if (dishCounter === 5) {
-        // eslint-disable-next-line no-undef
-        fetchData();
-        setData([]);
-        setDishIndex(0);
+    setDishIndex(prevIndex => {
+      const nextIndex = prevIndex + 1;
+      if (nextIndex === data.length) {
+        setDishCounter(prevCounter => prevCounter + 1);
+        return 0; // Reset to the first dish if we reach the end of the array
       }
-    }
+      return nextIndex;
+    });
   };
 
   const showPrevious = () => {
@@ -191,3 +198,4 @@ const SwipeCard = ({ open, setOpen }) => {
     </>
   );
 };
+

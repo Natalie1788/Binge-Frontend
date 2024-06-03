@@ -63,16 +63,11 @@ function TastePref() {
     }
 
     try {
-      const response = await fetch('https://azurefoodapi.azurewebsites.net/PostAllergiesAndDiets', {
+      const response = await fetch(`https://azurefoodapi.azurewebsites.net/PostAllergiesAndDiets?userId=${userId}&allergies=${encodeURIComponent(JSON.stringify(selectedAllergies))}&diets=${encodeURIComponent(JSON.stringify(selectedDiets))}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          userId,
-          allergies: selectedAllergies,
-          diets: selectedDiets,
-        }),
       });
 
       if (response.ok) {
