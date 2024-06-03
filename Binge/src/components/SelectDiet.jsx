@@ -2,9 +2,11 @@ import Select from 'react-select'
 import { useRecipeContext } from '../hooks/RecipeContext';
 
 const dietPreferencies = [
-  { value: 'paleodiet', label: 'Paleodiet' },
-  { value: 'vegan', label: 'Vegan' },
+  { value: 'none', label: 'No Dietary Preference' },
   { value: 'vegetarian', label: 'Vegetarian' },
+  { value: 'vegan', label: 'Vegan' },
+  {value: 'pescitarian', label: 'Pescitarian'},
+  { value: 'paleodiet', label: 'Paleodiet' },
   { value: 'keto', label: 'Keto' },
   { value: 'raw-food', label: 'Raw-food' },
   { value: 'LCHF-diet', label: 'LCHF-diet' },

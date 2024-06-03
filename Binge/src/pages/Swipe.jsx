@@ -9,15 +9,15 @@ import Modal from "../components/Modal";
 import { MobileNav } from "../components/mobileNav";
 import ArrowMenuSwipe from "../components/ArrowMenuSwipe";
 
-// localStorage.setItem("userId", "519beb0b-dfe6-4872-b3cc-fc4af27f6091");
+
 
 const Swipe = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <Navbar />
-      <ArrowMenuSwipe />
-      <SwipeCard open={open} setOpen={setOpen} />
+      <ArrowMenuSwipe  />
+      <SwipeCard open={open} setOpen={setOpen}  />
     </>
   );
 };
@@ -27,34 +27,48 @@ export default Swipe;
 const SwipeCard = ({ open, setOpen }) => {
   const [data, setData] = useState([]);
   const [dishIndex, setDishIndex] = useState(0);
+  const [loading, setLoading] = useState(false); // State to track loading status
   const likedDishes = [];
   const [dishCounter, setDishCounter] = useState(0);
 
+  // Define fetchData outside of useEffect to use it in showNext
+  const fetchData = async () => {
+    setLoading(true);
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      console.error("No userId found in localStorage");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const newData = await response.json();
+      console.log(newData);
+      setData(newData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
-      if (!userId) {
-        console.error("No userId found in localStorage");
-        return;
-      }
-
-      try {
-        const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const newData = await response.json();
-        console.log(newData);
-        setData(newData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-
-    };
-
     fetchData();
-  }, [setData]);
+  }, []); // Initial fetch on component mount
+
+  useEffect(() => {
+    if (dishCounter === 5) {
+      fetchData();
+      setData([]);
+      setDishIndex(0);
+      setDishCounter(0); // Reset dishCounter after fetching new data
+    }
+  }, [dishCounter]); // This useEffect triggers when dishCounter changes
 
   const dishes = data; // No need for unnecessary `dishes` array
 
@@ -62,17 +76,14 @@ const SwipeCard = ({ open, setOpen }) => {
   console.log(currentDish);
 
   const showNext = () => {
-    setDishIndex(dishIndex + 1);
-
-    if (dishIndex === dishes.length - 1) {
-      setDishCounter(dishCounter + 1);
-      if (dishCounter === 5) {
-        // eslint-disable-next-line no-undef
-        fetchData();
-        setData([]);
-        setDishIndex(0);
+    setDishIndex(prevIndex => {
+      const nextIndex = prevIndex + 1;
+      if (nextIndex === data.length) {
+        setDishCounter(prevCounter => prevCounter + 1);
+        return 0; // Reset to the first dish if we reach the end of the array
       }
-    }
+      return nextIndex;
+    });
   };
 
   const showPrevious = () => {
@@ -85,8 +96,6 @@ const SwipeCard = ({ open, setOpen }) => {
       console.error("User not found");
       return;
     }
-
-
 
     try {
       const response = await fetch(
@@ -128,9 +137,25 @@ const SwipeCard = ({ open, setOpen }) => {
     setDishCounter(dishCounter + 1);
   };
 
+  if (loading) {
+    return (
+      <div style={{
+        position: 'absolute', 
+        top: '50%', 
+        left: '50%', 
+        transform: 'translate(-50%, -50%)',
+        fontSize: '24px', 
+        fontWeight: 'bold',
+        textAlign: 'center' // Ensures text is centered if it wraps to a new line
+      }}>
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-300 p-0 m-0">
         <section className="flex   ">
           <div className="flex-col">
             <div
@@ -148,13 +173,22 @@ const SwipeCard = ({ open, setOpen }) => {
             </h2>
 
             <div className="flex space-x-10 p-2 justify-center">
-              <button className="text-3xl" onClick={showPrevious}>
+              <button
+                className="text-3xl hover:text-blue-700"
+                onClick={showPrevious}
+              >
                 <GrRevert />
               </button>
-              <button className="text-3xl" onClick={showNext}>
+              <button
+                className="text-3xl hover:text-red-700"
+                onClick={showNext}
+              >
                 <FaTrashCan />
               </button>
-              <button className="text-3xl" onClick={likeDish}>
+              <button
+                className="text-3xl hover:text-emerald-700"
+                onClick={likeDish}
+              >
                 <PiCookingPotFill />
               </button>
             </div>
@@ -169,3 +203,4 @@ const SwipeCard = ({ open, setOpen }) => {
     </>
   );
 };
+

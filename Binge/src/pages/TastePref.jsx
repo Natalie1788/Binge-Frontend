@@ -63,29 +63,31 @@ function TastePref() {
       return;
     }
 
-    try {
-      const response = await fetch('https://azurefoodapi.azurewebsites.net/PostAllergiesAndDiets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId,
-          allergies: selectedAllergies,
-          diets: selectedDiets,
-        }),
-      });
+ try {
+   const response = await fetch(
+     "https://azurefoodapi.azurewebsites.net/PostAllergiesAndDiets",
+     {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         userId: userId,
+         allergies: selectedAllergies,
+         diet: selectedDiets,
+       }),
+     }
+   );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Response from server:", data);
-      } else {
-        throw new Error('Failed to submit preferences');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-
+   if (response.ok) {
+     const data = await response.json();
+     console.log("Response from server:", data);
+   } else {
+     throw new Error("Failed to submit preferences");
+   }
+ } catch (error) {
+   console.error("Error:", error);
+ }
     navigate("/Swipe")
   };
 
