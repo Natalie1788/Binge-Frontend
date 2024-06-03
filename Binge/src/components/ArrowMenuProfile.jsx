@@ -32,3 +32,47 @@ const ArrowMenuProfile = () => {
 };
 
 export default ArrowMenuProfile;
+
+/* const [loading, setLoading] = useState(false); 
+
+
+setLoading(true);
+
+if (!userId) {
+  console.error("No userId found in localStorage");
+  setLoading(false);
+  return;
+}
+
+try {
+  const url = `https://azurefoodapi.azurewebsites.net/PicturesAndUrls?userId=${userId}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const newData = await response.json();
+  console.log(newData);
+  setData(newData);
+} catch (error) {
+  console.error("Error fetching data:", error);
+} finally {
+  setLoading(false);
+}
+
+
+if (loading) {
+  return (
+    <div style={{
+      position: 'absolute', 
+      top: '50%', 
+      left: '50%', 
+      transform: 'translate(-50%, -50%)',
+      fontSize: '24px', 
+      fontWeight: 'bold',
+      textAlign: 'center' // Ensures text is centered if it wraps to a new line
+    }}>
+      Loading...
+    </div>
+  );
+}
+ */
