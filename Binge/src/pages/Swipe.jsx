@@ -165,8 +165,7 @@ const SwipeCard = ({ open, setOpen }) => {
                 Swipe
               </h1>
               <h3 className="md:hidden px-5">
-                De rätter du gillar och svepar höger på, skapar AI ett recept
-                för och sparar i din kokbok
+                The dishes you like and swipe right on, AI creates a recipe for  and saves it in your cookbook.
               </h3>
             </div>
             
