@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, rgb(0, 36, 13) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .registration-form-container {
+    background: #2E6E65;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: black;
+  }
+  
+  .registration-form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .registration-form-container .input-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .registration-form-container .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .registration-form-container .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .registration-form-container .input-group input:focus {
+    outline: none;
+  }
+  
+  .registration-form-container .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .registration-form-container .terms input {
+    margin-right: 10px;
+  }
+  
+  .registration-form-container button {
+    background: hwb(243 0% 0%);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .registration-form-container button:hover {
+    background: hwb(243 0% 32%);
+  }
+  
+  .registration-form-container .login-link {
+    margin-top: 15px;
+    display: block;
+    color: white;
+  }
+  .password-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container .eye-icon {
+    margin-left: -30px; /* Adjust this value based on your design */
+    cursor: pointer;
+  }
+  

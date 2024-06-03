@@ -1,25 +1,27 @@
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
+import '../styles/style.css'; 
+import Footer from "../components/Footer"
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const SignInPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
     try {
-      const response = await axios.post('https://azurefoodapi.azurewebsites.net/login', {
+      const response = await axios.post(`https://azurefoodapi.azurewebsites.net/login2?email=${data.email}&password=${data.password}`, {
         email: data.email,
         password: data.password,
-        twoFactorCode: data.twoFactorCode || '',
-        twoFactorRecoveryCode: data.twoFactorRecoveryCode || '',
       });
-
       if (response.status === 200) {
-        // Assuming the response contains user data
-        console.log(response.data.firstName + " You Are Successfully Logged In");
-        // Navigate to profile or any other page
+        const userId = response.data.userId;
+        localStorage.setItem('userId', userId);
+        console.log(userId + " You Are Successfully Logged In");
+
         navigate("/profile");
       }
     } catch (error) {
@@ -34,11 +36,13 @@ const SignInPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-200 min-h-screen flex flex-col justify-center items-center">
-        <section className="size-[40rem] border-solid border-black border-8 flex flex-col justify-center items-center bg-white p-8 rounded-lg">
+      <div className="container">
+        <div className="registration-form-container">
+          <h2 className="text-xl">Logga In</h2>
           <SignInForm onSubmit={handleSubmit} />
-        </section>
+        </div>
       </div>
+      <Footer/>
     </>
   );
 };
@@ -50,33 +54,33 @@ const SignInForm = ({ onSubmit }) => {
     formState: { errors },
   } = useForm();
 
+  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="max-w-md mx-auto grid grid-cols-1 gap-4"
-    >
-      <div className="mb-4">
-        <label className="block mb-1" htmlFor="Email">
-          Email
-        </label>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="input-group">
+        <label className="block mb-1" htmlFor="Email">Email</label>
         <input
           className="border-solid border-black border-2 py-2 px-4 w-full"
           id="Email"
           {...register("email", { required: true })}
         />
-        {errors.email && <span>This field is required</span>}
+        {errors.email && <span className="error">This field is required</span>}
       </div>
-      <div className="mb-4">
-        <label className="block mb-1" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="border-solid border-black border-2 py-2 px-4 w-full"
-          id="password"
-          type="password"
-          {...register("password", { required: true })}
-        />
-        {errors.password && <span>This field is required</span>}
+      <div className="input-group">
+        <label className="block mb-1" htmlFor="password">Password</label>
+        <div className="password-container">
+          <input
+            className="border-solid border-black border-2 py-2 px-4 w-full"
+            id="password"
+            type={showPassword ? "text" : "password"}
+            {...register("password", { required: true })}
+          />
+          <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+        {errors.password && <span className="error">This field is required</span>}
       </div>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 my-5"
@@ -84,7 +88,7 @@ const SignInForm = ({ onSubmit }) => {
       >
         Log In
       </button>
-      <Link to="/signup">Do not have an Account?</Link>
+      <Link className="login-link" to="/signup">Do not have an Account?</Link>
     </form>
   );
 };

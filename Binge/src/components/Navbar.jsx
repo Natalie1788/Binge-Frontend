@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi"; // Assuming you're using React Icons
-import logo from "../components/BINGE.png";
+import Foodr from "../components/Foodr.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,15 +10,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-gray-500 dark:bg-gray-200">
+    <nav className="bg-white border-gray-500 dark:bg-gray-200 sm:hidden md:block">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         <Link to="/">
           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={logo} className="h-8" alt="logo" />
+            <img src={Foodr} className="h-8" alt="logo" />
           </a>
         </Link>
         <div className="relative">
-          {/* Menu toggle button */}
+          
           <button
             onClick={toggleMenu}
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -48,18 +47,11 @@ const Navbar = () => {
         <div className="bg-white border-t border-gray-200 dark:bg-green-900">
           {/* Search bar inside menu bar */}
           <div className="relative p-4">
-            <div className="relative">
-              <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+           
           </div>
           {/* End of search bar */}
           <div className="flex flex-col items-center justify-center pt-4 pb-2">
-            <Link to="./Cookbook">
+            <Link to="../Cookbook">
               <a href="#" className="block py-2 px-4 text-white hover:bg-blue-900">
                 Min Kokbok
               </a>
@@ -76,7 +68,7 @@ const Navbar = () => {
                 className="py-2 px-6 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onClick={toggleMenu}
               >
-                Login
+                Logga In
               </button>
             </Link>
           </div>

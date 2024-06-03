@@ -1,41 +1,42 @@
-import React from 'react'
 import Select from 'react-select'
-import { useState } from 'react'
+import { useRecipeContext } from '../hooks/RecipeContext';
+//import { useState } from 'react'
 
-const allergies = [
-  { value: 'nötter', label: 'Nötter' },
+const allergiesList = [
+  { value: 'nuts', label: 'Nuts' },
   { value: 'citrus', label: 'Citrus' },
-  { value: 'ägg', label: 'Ägg' },
+  { value: 'egg', label: 'Egg' },
   { value: 'gluten', label: 'Gluten' },
-  { value: 'laktos', label: 'Laktos' },
-  { value: 'fruktos', label: 'Fruktos' },
+  { value: 'lactose', label: 'Lactose' },
+  { value: 'fructose', label: 'Fructose' },
   
 ]
 const isMulti = true;
 
-export default function AllergySelection(){
-const [taste, setTaste] = useState("")
+export default function AllergySelection() {
+  const { selectedAllergies, addAllergy,  clearAllergies } = useRecipeContext();
 
-const getValue = () =>{
-  if (taste) {
-    return isMulti ? allergies.filter(c=>taste.indexOf(c.value)>=0) : options.find(c=>c.value === taste)
-  } else {
-    return isMulti ? [] : ""
-  }
-}
-const onChange = (newValue) => {
-  setTaste(
-    isMulti ? newValue.map(v => v.value) : newValue.value
-  )
-}
+  const getValue = () => {
+    return isMulti ? allergiesList.filter(c => selectedAllergies.includes(c.value)) : allergiesList.find(c => c.value === selectedAllergies);
+  };
+
+  const onChange = (newValue) => {
+    const newAllergies = isMulti ? newValue.map(v => v.value) : newValue.value;
+    clearAllergies(); 
+    newAllergies.forEach((allergy) => {
+      addAllergy(allergy);
+    });
+  };
+
+  
   return(
-    <div className='container w-2/4 mx-auto mt-12'>
+    //<div className='container w-2/4 mx-auto mt-12'>
+    <div className='mt-8'>
       <h1 className='text-lg'>Allergier</h1>
       <Select
-    //defaultValue={[options[2], options[3]]}
     isMulti
-    name="allergies"
-    options={allergies}
+    name="allergiesList"
+    options={allergiesList}
     className="basic-multi-select"
     classNamePrefix="select"
     onChange={onChange}
