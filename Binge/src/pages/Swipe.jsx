@@ -133,12 +133,11 @@ const SwipeCard = ({ open, setOpen }) => {
   if (loading) {
     return (
       <div style={{
-        position: 'absolute', // Set position to absolute
-        top: '50%', // Center vertically
-        left: '50%', // Center horizontally
-        transform: 'translate(-50%, -50%)', // Adjust position to truly center
-        fontSize: '24px', // Increase font size
-        fontWeight: 'bold' // Optional: make the text bold
+        position: 'absolute', 
+        top: '50%', 
+        transform: 'translate(-50%, -50%)',
+        fontSize: '24px', 
+        fontWeight: 'bold' 
       }}>
         Loading...
       </div>
