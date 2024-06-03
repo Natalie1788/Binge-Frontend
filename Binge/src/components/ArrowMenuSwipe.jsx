@@ -28,13 +28,13 @@ const ArrowMenuSwipe = () => {
           </Link>
           <p className="p-3">Back to Preferences</p>
         </div>
-         <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center">
           <h1 className="flex text-emerald-700 font-bold text-4xl my-3  ">
             Swipe
           </h1>
           <h3>
-            De rätter du gillar och svepar höger på, skapar AI ett recept för
-            och sparar i din kokbok
+            The dishes you like and swipe right on, AI creates a recipe for and
+            saves it in your cookbook.
           </h3>
         </div>
         <div className="flex flex-col items-center">
