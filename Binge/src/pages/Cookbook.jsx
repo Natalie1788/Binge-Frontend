@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
-import Footer from "../components/Footer"
+// import Footer from "../components/Footer"
 import { MobileNav } from "../components/mobileNav"
 import ArrowMenuCookbook from "../components/ArrowMenuCookbook"
 import { TrashIcon } from '@heroicons/react/24/outline'
@@ -60,7 +60,7 @@ function Cookbook() {
   return (
     <>
       <Navbar />
-      <div className="md:grid md:gap-4 bg-gray-300 p-5 pt-0">
+      <div className="md:grid md:gap-4 bg-gray-200 p-5 pt-0">
 
         {/* Toggle button for mobile sidebar */}
 
@@ -115,7 +115,7 @@ function Cookbook() {
       {/* Popup window for liked food */}
       {isFoodOpen && <Popup onClose={noFood} dish={selectedDish} />}
 
-      <Footer />
+      {/* <Footer /> */}
       <MobileNav />
     </>
   )
