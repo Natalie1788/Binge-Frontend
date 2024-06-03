@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Popup from '../components/ClickEnlargeFood'
 import Footer from "../components/Footer"
@@ -61,35 +61,17 @@ function Cookbook() {
   return (
     <>
       <Navbar />
-      <div className="md:grid md:grid-cols-[auto_1fr] md:gap-4 bg-gray-300 p-5 pt-0">
+      <div className="md:grid md:gap-4 bg-gray-300 p-5 pt-0">
 
         {/* Toggle button for mobile sidebar */}
-        <button
-          className="block md:hidden mb-4 p-2 bg-blue-500 text-white rounded"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          {isSidebarOpen ? 'Close Menu' : 'Open Menu'}
-        </button>
-
-        {/* Sidebar */}
-        <div className={`p-5 bg-white border border-black rounded-lg h-auto md:h-40 md:sticky md:top-20 ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
-          <Link to='../Profile'>
-            <p className='hover:bg-gray-200 hover:text-blue-700 p-2 rounded'>Smakprofil</p>
-          </Link>
-          <Link to='../Swipe'>
-            <p className='hover:bg-gray-200 hover:text-blue-700 p-2 rounded'>Svepa</p>
-          </Link>
-          <Link to="../Cookbook">
-            <p className='hover:bg-gray-200 hover:text-blue-700 p-2 rounded'>Kokbok</p>
-          </Link>
-        </div>
+        
 
         <div className="flex flex-col items-center w-full">
           <h1 className="text">Din kokbok - Gillade recept</h1>
           <p>Klicka på korten för att få en mer detaljerad vy på ditt AI-genererade recept!</p>
 
           {/* Grid layout for the dishes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mt-4">
             {dishes.length > 0 ? (
               dishes.map(dish => (
                 <div key={dish.dishName} className="bg-white border border-black rounded-lg p-4" aria-label={`Recipe card for ${dish.dishName}`}>

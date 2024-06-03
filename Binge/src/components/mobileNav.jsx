@@ -8,7 +8,7 @@ export const MobileNav = () => {
 return(
 
 
-<nav className="bg-white p-5 my-10 border border-solid border-black   justify-around w-full bottom-0 sm:flex md:hidden">
+<nav className="bg-white p-5 my-10 border border-solid border-black justify-around w-full bottom-0 sm:flex md:hidden sticky top-0 z-50">
   <div className="flex flex-col items-center">
     <Link to="/profile">
       <FaUser size={30} className="ml-6" />
