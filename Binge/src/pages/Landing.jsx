@@ -17,7 +17,7 @@ const Landing = () => {
             <div className="title">
               <h1 className='font-sans font-extrabold text-2xl md:text-3xl mb-4 md:mb-16'>Foodr: Din personliga kock med AI-skapade recept</h1>
               <p className='text-lg md:text-xl font-normal'>
-                Välkommen till SwifeChef, där du kan upptäcka, gilla och skapa recept på ett roligt sätt med ett enkelt svep.
+                Välkommen till Foodr, där du kan upptäcka, gilla och skapa recept på ett roligt sätt med ett enkelt svep.
                 <br /> Svep höger på en maträttsbild du gillar, och låt vår avancerade AI-teknik generera ett skräddarsytt recept som passar dina preferenser.
               </p>
             </div>
