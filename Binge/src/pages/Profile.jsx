@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import '../styles/App.css'
 import { RecipeProvider } from "../hooks/RecipeContext";
 import TastePref from "./TastePref";
+import ArrowMenuProfile from "../components/ArrowMenuProfile";
 
 
 
@@ -15,6 +16,7 @@ function Profile() {
     <RecipeProvider>
 
     <Navbar/>
+    <ArrowMenuProfile/>
  
  <TastePref/>
 

@@ -16,8 +16,8 @@ const Swipe = () => {
   return (
     <>
       <Navbar />
-      <ArrowMenuSwipe />
-      <SwipeCard open={open} setOpen={setOpen} />
+      <ArrowMenuSwipe  />
+      <SwipeCard open={open} setOpen={setOpen}  />
     </>
   );
 };
@@ -142,9 +142,11 @@ const SwipeCard = ({ open, setOpen }) => {
       <div style={{
         position: 'absolute', 
         top: '50%', 
+        left: '50%', 
         transform: 'translate(-50%, -50%)',
         fontSize: '24px', 
-        fontWeight: 'bold' 
+        fontWeight: 'bold',
+        textAlign: 'center' // Ensures text is centered if it wraps to a new line
       }}>
         Loading...
       </div>
@@ -153,7 +155,7 @@ const SwipeCard = ({ open, setOpen }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-300 p-0 m-0">
         <section className="flex   ">
           <div className="flex-col">
             <div

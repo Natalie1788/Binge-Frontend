@@ -11,7 +11,7 @@ const ArrowMenuSwipe = () => {
         setRightHover(prevRightHover => !prevRightHover);
     }
     return (
-      <div className="md:flex items-center justify-between w-full h-1/4  sm:hidden">
+      <div className="md:flex items-center justify-between w-full h-1/4  sm:hidden bg-gray-300">
         <div className="flex flex-col items-center">
           <Link to="/profile">
             {lefthover ? (

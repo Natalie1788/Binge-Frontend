@@ -1,5 +1,5 @@
-
 import { createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from '../components/ProtectedRoute';
 
 import Errorpage from "../pages/Errorpage";
 import Landing from "../pages/Landing";
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <Profile />,
+    element: <ProtectedRoute><Profile /></ProtectedRoute>,
     errorElement: <Errorpage />,
   },
   {
@@ -33,12 +33,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/swipe",
-    element: <Swipe />,
+    element: <ProtectedRoute><Swipe /></ProtectedRoute>,
     errorElement: <Errorpage />,
   },
   {
     path: "/cookbook",
-    element: <Cookbook />,
+    element: <ProtectedRoute><Cookbook /></ProtectedRoute>,
     errorElement: <Errorpage />,
   },
 ]);
