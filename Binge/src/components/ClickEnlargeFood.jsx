@@ -5,7 +5,7 @@ const Popup = ({ onClose, dish }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50" onClick={onClose}>
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-md mx-4 sm:mx-auto overflow-y-auto max-h-full" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 sm:mx-auto overflow-y-auto max-h-full" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-center">
                     <h2 className="text-xl md:text-2xl font-bold">{dish.dishName}</h2>
                     <button className="text-gray-500 hover:text-gray-700" onClick={onClose}>
