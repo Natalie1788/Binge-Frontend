@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Popup = ({ onClose, dish }) => {
-    if (!dish) return null; // Return null if no dish is selected
+    if (!dish) return null // Return null if no dish is selected
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50" onClick={onClose}>
@@ -36,4 +36,4 @@ const Popup = ({ onClose, dish }) => {
     )
 }
 
-export default Popup;
+export default Popup
