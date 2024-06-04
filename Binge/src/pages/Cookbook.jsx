@@ -11,7 +11,7 @@ function Cookbook() {
   const [isFoodOpen, setIsFoodOpen] = useState(false)
   const [dishes, setDishes] = useState([])
   const [selectedDish, setSelectedDish] = useState(null)
-  const [numOfPeople, setNumOfPeople] = useState(1) //Default: 1 person
+  const [numOfPeople, setNumOfPeople] = useState(1) // Default: 1 person
   const [loading, setLoading] = useState(true)
   const [popupLoading, setPopupLoading] = useState(false)
 
@@ -37,8 +37,12 @@ function Cookbook() {
     fetch(`https://azurefoodapi.azurewebsites.net/GetIngredientsAndRecipe?dishName=${dishName}&numOfPeople=${numOfPeople}&userId=${userId}`)
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched dish data:', data)
-        setSelectedDish(data)
+        console.log('Fetched dish data:', data) // Add this log to check the fetched data
+        // Find the dish from the dishes array to get the image URL
+        const dish = dishes.find(d => d.dishName === dishName)
+        if (dish) {
+          setSelectedDish({ ...data, url: dish.url }) // Include the URL in the selected dish data
+        }
         setIsFoodOpen(true)
         setPopupLoading(false)
       })
