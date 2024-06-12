@@ -8,7 +8,7 @@ import router from "./routes/Routing";
 const root = createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
+<React.StrictMode>
 
     <RouterProvider router={router} />
 

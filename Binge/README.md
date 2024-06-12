@@ -1,4 +1,14 @@
-# Binge
+# Foodr
+
+
+ *** Beskrivning ***
+
+
+Först använde vi Jira för att skapa användarhistorier och dela upp ansvaret. Men tyvärr, efter några dagar, stängdes vår tavla i Jira eftersom vår prenumeration gick ut och vi kunde inte fortsätta använda Jira. Vi försökte istället skapa en tavla i GitHub Issues och dokumenterade vårt arbete där.
+
+Leila ==> jobbade med landningssidan, navbaren, footern, registrerings- och inloggningssidan samt stilen. Natalia ==> jobbade på profilsidan, Gabriel ==> på swipe-sidan och Carl==> på kokbokssidan.
+
+Varje person försökte hjälpa varandra när vi stötte på problem för att lösa dem, och alla utförde sina tilldelade uppgifter.
 
 Git Instructions
 
@@ -12,10 +22,14 @@ Git Instructions
 
 
 
+
+
+
 Project Resources
 Tailwind
  Install guide - https://tailwindcss.com/docs/guides/vite
   ⚠ Vite is required, prior to downloading Tailwind
+
  *** Leila**
  npm install tailwindcss @heroicons/react (for icon of social media)
 
@@ -42,8 +56,8 @@ Install guide - https://react-hook-form.com/get-started
 React icons
 Install guide - https://react-icons.github.io/react-icons/
 
-*** Footer ***
+*** Footer (Leila)***
 
 for use icon social media on footer should be Install FontAwesome::
 
-npm install @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+npm install @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons# Foodr-App
